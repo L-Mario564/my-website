@@ -1,16 +1,28 @@
 ---
-
+import Layout from '../components/Layout.astro';
+import LandingTitle from '../components/LandingTitle.svelte';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <h1>Astro</h1>
-  </body>
-</html>
+<Layout title="Mario564's Portfolio">
+  <main>
+    <div class="h-screen flex items-center">
+      <div class="max-w-[1500px] h-max flex relative p-12">
+        <div class="w-full absolute h-full top-0 left-0 bg-gradient-to-tr from-purple-500 to-orange-500 -z-10 rounded-[25%] blur-[96px] opacity-25 animate-fade-in-landing-header" />
+        <div class="mr-48">
+          <h1 class="relative opacity-0 animate-fade-in-slide-to-l-welcome font-black text-6xl inline-block bg-gradient-to-b from-white from-[25%] to-zinc-500 text-transparent bg-clip-text w-max">
+            Hi there! I'm Mario564
+          </h1>
+          <div class="text-3xl opacity-0 animate-fade-in font-source-code-pro font-medium mt-1 tracking-wide flex" style="animation-delay: 0.75s;">
+            <span class="bg-gradient-to-r from-purple-500 to-orange-500 text-transparent bg-clip-text">{'>'}</span>
+            <LandingTitle client:idle  />
+          </div>
+        </div>
+        <div class="flex flex-col gap-4 text-justify">
+          <p class="animate-fade-in-slide-to-t-pagraph relative opacity-0" style="animation-delay: 0.9s;"><span class="bg-gradient-to-r font-bold from-purple-500 to-orange-500 text-transparent bg-clip-text">Welcome to my website!</span> I'm a self-taught {19} year old web developer looking to learn new things and use my existing knowledge to create cool projects I'm passionate about.</p>
+          <p class="animate-fade-in-slide-to-t-pagraph relative opacity-0" style="animation-delay: 0.93s;">I started my web development journey in 2019 with the basics: HTML, CSS and Javascript; just to see if it was my thing, and I quickly discovered that it certainly was! Fast forward to the present day, I've become a Typescript developer who is more experienced in the frontend, but still have plenty of knowledge on the backend as well. I also like trying out new technologies and contributing to open-source.</p>
+          <p class="animate-fade-in-slide-to-t-pagraph relative opacity-0" style="animation-delay: 0.96s;">Tech-related interests aside, I also enjoy playing video games, especially rhythm-based and platformers; I listen to a wide variety of music genres such as rock, metal, EDM, rap, jazz and many related genres and subgenres. Occassionally, I dip my toes in image editing and technical writing as well, not particularly great at them but they're other things I do enjoy from time to time.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

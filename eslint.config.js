@@ -12,6 +12,11 @@ export default [
   ...eslintPluginAstro.configs['flat/recommended'],
   ...eslintPluginSvelte.configs['flat/recommended'],
   {
+    env: {
+      browser: true,
+      es2021: true,
+      node: true
+    },
     ignores: ['node_modules', '.env', 'pnpm-lock.yaml'],
     rules: {
       quotes: [
