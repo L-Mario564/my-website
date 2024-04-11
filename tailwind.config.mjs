@@ -4,6 +4,8 @@ export default {
   theme: {
     extend: {
       screens: {
+        '1.5xl': '1400px',
+        '2md': '860px',
         xs: '450px'
       },
       fontFamily: {
@@ -27,10 +29,10 @@ export default {
       },
       animation: {
         'cursor-blink': 'cursor-blink 1.5s infinite',
-        'fade-in': 'fade-in 0.85s forwards ease-out',
-        'fade-in-landing-header': 'fade-in-opacity-25 1.75s forwards ease-out',
-        'fade-in-slide-to-l-welcome': 'fade-in-slide-to-l-welcome 0.85s forwards ease-out',
-        'fade-in-slide-to-t-pagraph': 'fade-in-slide-to-t-paragraph 0.75s forwards ease-out'
+        'landing-title': 'fade-in 0.85s forwards ease-out',
+        'landing-header-blur': 'fade-in 1.75s forwards ease-out',
+        'landing-welcome': 'fade-in-slide-to-l-lg 0.85s forwards ease-out',
+        'paragraph': 'fade-in-slide-to-t-sm 0.75s forwards ease-out'
       },
       keyframes: {
         'fade-in': {
@@ -41,15 +43,7 @@ export default {
             opacity: '1'
           }
         },
-        'fade-in-opacity-25': {
-          from: {
-            opacity: '0'
-          },
-          to: {
-            opacity: '0.25'
-          }
-        },
-        'fade-in-slide-to-l-welcome': {
+        'fade-in-slide-to-l-lg': {
           '0%': {
             opacity: '0',
             right: '-250px'
@@ -62,7 +56,7 @@ export default {
             right: '0'
           }
         },
-        'fade-in-slide-to-t-paragraph': {
+        'fade-in-slide-to-t-sm': {
           '0%': {
             opacity: '0',
             bottom: '-100px'
@@ -103,7 +97,8 @@ export default {
           }
         }
       }
-    }
+    },
+
   },
   plugins: []
 };

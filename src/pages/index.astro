@@ -4,25 +4,27 @@ import LandingTitle from '../components/LandingTitle.svelte';
 ---
 
 <Layout title="Mario564's Portfolio">
-  <main>
-    <div class="h-screen flex items-center">
-      <div class="max-w-[1500px] h-max flex relative p-12">
-        <div class="w-full absolute h-full top-0 left-0 bg-gradient-to-tr from-purple-500 to-orange-500 -z-10 rounded-[25%] blur-[96px] opacity-25 animate-fade-in-landing-header" />
-        <div class="mr-48">
-          <h1 class="relative opacity-0 animate-fade-in-slide-to-l-welcome font-black text-6xl inline-block bg-gradient-to-b from-white from-[25%] to-zinc-500 text-transparent bg-clip-text w-max">
-            Hi there! I'm Mario564
-          </h1>
-          <div class="text-3xl opacity-0 animate-fade-in font-source-code-pro font-medium mt-1 tracking-wide flex" style="animation-delay: 0.75s;">
-            <span class="bg-gradient-to-r from-purple-500 to-orange-500 text-transparent bg-clip-text">{'>'}</span>
-            <LandingTitle client:idle  />
-          </div>
-        </div>
-        <div class="flex flex-col gap-4 text-justify">
-          <p class="animate-fade-in-slide-to-t-pagraph relative opacity-0" style="animation-delay: 0.9s;"><span class="bg-gradient-to-r font-bold from-purple-500 to-orange-500 text-transparent bg-clip-text">Welcome to my website!</span> I'm a self-taught {19} year old web developer looking to learn new things and use my existing knowledge to create cool projects I'm passionate about.</p>
-          <p class="animate-fade-in-slide-to-t-pagraph relative opacity-0" style="animation-delay: 0.93s;">I started my web development journey in 2019 with the basics: HTML, CSS and Javascript; just to see if it was my thing, and I quickly discovered that it certainly was! Fast forward to the present day, I've become a Typescript developer who is more experienced in the frontend, but still have plenty of knowledge on the backend as well. I also like trying out new technologies and contributing to open-source.</p>
-          <p class="animate-fade-in-slide-to-t-pagraph relative opacity-0" style="animation-delay: 0.96s;">Tech-related interests aside, I also enjoy playing video games, especially rhythm-based and platformers; I listen to a wide variety of music genres such as rock, metal, EDM, rap, jazz and many related genres and subgenres. Occassionally, I dip my toes in image editing and technical writing as well, not particularly great at them but they're other things I do enjoy from time to time.</p>
+  <div class="h-screen flex justify-center 1.5xl:items-center">
+    <div class="max-w-[1000px] 1.5xl:max-w-[1600px] w-full h-max flex relative p-content flex-col 1.5xl:flex-row">
+      <div class="absolute w-full h-32 lg:h-48 1.5xl:h-full top-0 sm:top-4 md:top-12 2md:top-16 lg:top-20 1.5xl:top-0 left-0 opacity-55 sm:opacity-50 md:opacity-45 2md:opacity-40 lg:opacity-30 1.5xl:opacity-20">
+        <div class="w-full h-full bg-gradient-to-tr from-purple-500 to-orange-500 -z-10 rounded-[25%] blur-[96px] animate-landing-header-blur" />
+      </div>
+      <div class="w-full mb-8 sm:mb-12 1.5xl:mb-0 mr-0 xl:mr-24 2xl:mr-32">
+        <h1 class="relative opacity-0 animate-landing-welcome font-black text-3xl xs:text-4xl sm:text-5xl md:text-6xl w-max flex flex-col xs:inline-block">
+          <span class="inline-block bg-gradient-to-b from-white from-[25%] to-zinc-500 text-transparent bg-clip-text w-max">Hi there!</span>
+          <span class="inline-block bg-gradient-to-b from-white from-[25%] to-zinc-500 text-transparent bg-clip-text w-max">I'm Mario564</span>
+        </h1>
+        <div class="hidden xs:flex xs:text-lg sm:text-2xl md:text-3xl opacity-0 animate-landing-title font-source-code-pro font-medium mt-1 tracking-wide" style="animation-delay: 0.75s;">
+          <span class="bg-gradient-to-r from-purple-500 to-orange-500 text-transparent bg-clip-text">{'>'}</span>
+          <LandingTitle client:only="svelte"  />
         </div>
       </div>
+      <div class="flex flex-col gap-4 text-justify 1.5xl:max-w-max">
+        <p class="animate-paragraph relative opacity-0" style="animation-delay: 0.9s;"><span class="bg-gradient-to-r font-bold from-purple-500 to-orange-500 text-transparent bg-clip-text">Welcome to my website!</span> I'm a self-taught {19} year old web developer looking to learn new things and use my existing knowledge to create cool projects I'm passionate about.</p>
+        <p class="animate-paragraph relative opacity-0" style="animation-delay: 0.93s;">I started my web development journey in 2019 with the basics: HTML, CSS and Javascript; just to see if it was my thing, and I quickly discovered that it certainly was! Fast forward to the present day, I've become a Typescript developer who is more experienced in the frontend, but still have plenty of knowledge on the backend as well. I also like trying out new technologies and contributing to open-source.</p>
+        <p class="animate-paragraph relative opacity-0" style="animation-delay: 0.96s;">Tech-related interests aside, I also enjoy playing video games, especially rhythm-based and platformers; I listen to a wide variety of music genres such as rock, metal, EDM, rap, jazz and many related genres and subgenres. Occassionally, I dip my toes in image editing and technical writing as well, not particularly great at them but they're other things I do enjoy from time to time.</p>
+      </div>
     </div>
-  </main>
+  </div>
+  <div class="h-96 w-2" />
 </Layout>

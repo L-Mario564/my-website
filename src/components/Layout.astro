@@ -1,4 +1,6 @@
 ---
+import '../main.css';
+
 export interface Props {
   title: string;
 }
@@ -21,6 +23,8 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="font-lato bg-woodsmoke-950 text-white">
-    <slot />
+    <main class="mt-8">
+      <slot />
+    </main>
   </body>
 </html>

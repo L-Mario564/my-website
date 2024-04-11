@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount, onDestroy } from 'svelte';
 
-  const letterWidth = 18.75; // Pixels
+  let letterWidth = 18.75; // Pixels
   const transitionTime = 50; // Milliseconds
   const titles = [
     'Full-stack web developer',
@@ -14,11 +14,30 @@
   let titleIndex = titles.length - 1;
 
   onMount(() => {
+    windowResize();
+    window.addEventListener('resize', windowResize);
+
     setTimeout(() => {
       animateTitle();
       animate = true;
     }, 1200);
   });
+
+  onDestroy(() => {
+    window.removeEventListener('resize', windowResize);
+  })
+
+  function windowResize() {
+    if (window.innerWidth < 450) {
+      letterWidth = 10;
+    } else if (window.innerWidth < 640) {
+      letterWidth = 11.25;
+    } else if (window.innerWidth < 768) {
+      letterWidth = 15;
+    } else {
+      letterWidth = 18.75;
+    }
+  }
 
   function animateTitle() {
     titleIndex = titleIndex > titles.length - 2 ? 0 : titleIndex + 1;

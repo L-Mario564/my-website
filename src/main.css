@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .p-content {
+    @apply p-8 sm:p-12 md:p-16 2md:p-24 lg:p-32 1.5xl:p-24 2xl:p-32;
+  }
+}
