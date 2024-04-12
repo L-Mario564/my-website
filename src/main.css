@@ -11,6 +11,10 @@
     @apply font-semibold italic text-lg tracking-wide inline-block bg-gradient-to-b from-white from-[50%] to-zinc-500 text-transparent bg-clip-text w-max;
   }
 
+  .w-welcome {
+    @apply w-[374px] sm:w-[499px] md:w-[623px] 1.5xl:w-auto;
+  }
+
   .p {
     @apply max-w-[600px];
   }
@@ -21,6 +25,10 @@
 
   .px-content {
     @apply px-8 sm:px-12 md:px-16 2md:px-24 lg:px-32 1.5xl:px-24 2xl:px-32;
+  }
+
+  .py-content {
+    @apply py-8 sm:py-12 md:py-16 2md:py-24 lg:py-32 1.5xl:py-24 2xl:py-32;
   }
 
   .tooltip {
