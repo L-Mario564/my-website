@@ -3,7 +3,31 @@
 @tailwind utilities;
 
 @layer components {
+  .h2 {
+    @apply text-3xl sm:text-4xl font-bold inline-block bg-gradient-to-b from-white from-[50%] to-zinc-500 text-transparent bg-clip-text w-max;
+  }
+  
+  .subtitle {
+    @apply font-semibold italic text-lg tracking-wide inline-block bg-gradient-to-b from-white from-[50%] to-zinc-500 text-transparent bg-clip-text w-max;
+  }
+
+  .p {
+    @apply max-w-[600px];
+  }
+
   .p-content {
     @apply p-8 sm:p-12 md:p-16 2md:p-24 lg:p-32 1.5xl:p-24 2xl:p-32;
+  }
+
+  .px-content {
+    @apply px-8 sm:px-12 md:px-16 2md:px-24 lg:px-32 1.5xl:px-24 2xl:px-32;
+  }
+
+  .tooltip {
+    @apply rounded-md bg-white text-black absolute p-2 z-10 text-xs text-center max-w-[175px] w-max;
+  }
+
+  .tooltip-caret {
+    @apply absolute w-full left-0 -bottom-1 flex justify-center before:bg-white before:rotate-45 before:w-2 before:h-2;
   }
 }
