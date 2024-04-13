@@ -38,6 +38,7 @@
       alt={technology.name}
       width={48}
       height={48}
+      class="scale-90 hover:scale-100 duration-300"
       on:mouseenter={onImageMouseEnter}
       on:mouseleave={onImageMouseLeave}
     />
