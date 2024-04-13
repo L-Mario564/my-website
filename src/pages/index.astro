@@ -2,8 +2,7 @@
 import Layout from '../components/Layout.astro';
 import LandingTitle from '../components/LandingTitle.svelte';
 import Technology from '../components/Technology.svelte';
-import Discord from '../components/icons/Discord.astro';
-import { Mail } from 'lucide-astro';
+import ContactButtons from '../components/ContactButtons.svelte';
 import { languages, frontend, backend, misc } from '../content/technologies';
 ---
 
@@ -24,7 +23,7 @@ import { languages, frontend, backend, misc } from '../content/technologies';
         </div>
       </div>
       <div class="flex flex-col items-center gap-4 max-1.5xl:px-content text-justify 1.5xl:max-w-max">
-        <p class="max-1.5xl:p animate-paragraph relative opacity-0" style="animation-delay: 0.9s;"><span class="bg-gradient-to-r font-bold from-purple-500 to-orange-500 text-transparent bg-clip-text">Welcome to my website!</span> I'm a self-taught {19} year old web developer looking to learn new things and use my existing knowledge to create cool projects I'm passionate about.</p>
+        <p class="max-1.5xl:p animate-paragraph relative opacity-0" style="animation-delay: 0.9s;"><span class="bg-gradient-to-r font-bold from-purple-500 to-orange-500 text-transparent bg-clip-text">Welcome to my website!</span> I'm a self-taught {Math.abs(new Date(Date.now() - 1099872000000).getUTCFullYear() - 1970)} year old web developer looking to learn new things and use my existing knowledge to create cool projects I'm passionate about.</p>
         <p class="max-1.5xl:p animate-paragraph relative opacity-0" style="animation-delay: 0.93s;">I started my web development journey in 2019 with the basics: HTML, CSS and Javascript; just to see if it was my thing, and I quickly discovered that it certainly was! Fast forward to the present day, I've become a Typescript developer who is more experienced in the frontend, but still have plenty of knowledge on the backend as well. I also like trying out new technologies and contributing to open-source.</p>
         <p class="max-1.5xl:p animate-paragraph relative opacity-0" style="animation-delay: 0.96s;">Tech-related interests aside, I also enjoy playing video games, especially rhythm-based and platformers; I listen to a wide variety of music genres such as rock, metal, EDM, rap, jazz and many related genres and subgenres. Occassionally, I dip my toes in image editing and technical writing as well, not particularly great at them but they're other things I do enjoy from time to time.</p>
       </div>
@@ -61,19 +60,14 @@ import { languages, frontend, backend, misc } from '../content/technologies';
     </div>
   </div>
   <div class="flex justify-center mt-16 px-content">
-    <div class="max-w-[1000px]">
+    <div class="max-w-[1000px] w-full">
       <h2 id="contact-h2" class="h2 opacity-0 relative">Contact</h2>
       <div class="grid md:grid-cols-[calc(55%-4rem)_45%] xl:grid-cols-[calc(60%-6rem)_40%] 1.5xl:grid-cols-[calc(60%-8rem)_40%] gap-8 md:gap-16 xl:gap-24 1.5xl:gap-32 w-full mt-8">
         <div id="contact-p" class="w-full opacity-0">
           <p class="p text-justify">If you wish to contact me, my preferred method of communicating is through Discord. If you're inquiry is more serious use my email.</p>
         </div>
         <div class="w-full grid grid-cols-2 h-full justify-center items-center gap-2 lg:gap-4">
-          <button class="btn btn-gradient w-full">
-            <Discord w={18} h={18} class="fill-black mr-2" /> Discord
-          </button>
-          <button class="btn btn-gradient w-full">
-            <Mail width={18} height={18} class="stroke-black mr-2" /> Email
-          </button>
+          <ContactButtons client:visible />
         </div>
       </div>
     </div>

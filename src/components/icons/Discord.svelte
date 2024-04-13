@@ -1,12 +1,9 @@
----
-interface Props {
-  w: number;
-  h: number;
-  class?: string;
-}
-
-const { w, h, class: styles } = Astro.props;
----
+<script lang="ts">
+  export let w: number;
+  export let h: number;
+  let styles: string | undefined = undefined;
+  export { styles as class }
+</script>
 
 <svg width={w} height={h} class={styles} viewBox="0 -28.5 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" fill="currentColor">
   <g stroke-width="0" />
