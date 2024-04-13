@@ -17,6 +17,9 @@ dependencies:
   astro:
     specifier: ^4.5.18
     version: 4.5.18(typescript@5.4.5)
+  lucide-astro:
+    specifier: ^0.368.0
+    version: 0.368.0(astro@4.5.18)
   lucide-svelte:
     specifier: ^0.368.0
     version: 0.368.0(svelte@4.2.13)
@@ -3166,6 +3169,14 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
+
+  /lucide-astro@0.368.0(astro@4.5.18):
+    resolution: {integrity: sha512-+CoPP8G6SNISxutZ/t35+7spuHuCGbzZU+IToBq91gcNtmxoIs/eh4S/VyshcRQIm/nxpmlu4y9FkYfiElPfdA==}
+    peerDependencies:
+      astro: '>=2.7.1'
+    dependencies:
+      astro: 4.5.18(typescript@5.4.5)
+    dev: false
 
   /lucide-svelte@0.368.0(svelte@4.2.13):
     resolution: {integrity: sha512-/uSazMXmY0cZzehGaE1SHQDtQrQBvAVR8UCEpNEjRKSy3yluSqtlGj7T5KvewJpP9kBDCKPgKVcKgdJgEzpRlw==}
