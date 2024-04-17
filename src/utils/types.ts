@@ -7,9 +7,9 @@ export interface Technology {
 
 export interface Website {
   name: string;
-  url: string;
-  repo?: string;
   description: string;
+  url?: string;
+  repo?: string;
   img: {
     folder: string;
     count: number;

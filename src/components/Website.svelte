@@ -85,13 +85,15 @@
       <strong class="text-white font-bold text-xl">{website.name}</strong>
       <div class="w-full h-[2px] rounded-full bg-gradient-to-r from-purple-500 to-orange-500 mt-1 mb-2" />
       <p>{website.description}</p>
-      <div class="absolute bottom-0 left-0 p-4">
-        <div class="flex text-sm items-center gap-2">
-          <Globe size={16} class="stroke-white" />
-          <a href={website.url} target="_blank" class="hover:underline">{new URL(website.url).hostname}</a>
-        </div>
+      <div class="absolute bottom-0 left-0 p-4 flex flex-col gap-1">
+        {#if website.url}
+          <div class="flex text-sm items-center gap-2">
+            <Globe size={16} class="stroke-white" />
+            <a href={website.url} target="_blank" class="hover:underline">{new URL(website.url).hostname}</a>
+          </div>
+        {/if}
         {#if website.repo}
-          <div class="flex text-sm items-center gap-2 mt-1">
+          <div class="flex text-sm items-center gap-2">
             <Github w={16} h={16} class="fill-white" />
             <a href={website.repo} target="_blank" class="hover:underline">{new URL(website.repo).pathname.slice(1)}</a>
           </div>
