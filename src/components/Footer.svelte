@@ -7,12 +7,8 @@
   let showDiscordTooltip = false;
   let discordCopied = false;
 
-  function onDiscordMouseEnter() {
-    showDiscordTooltip = true;
-  }
-
-  function onDiscordMouseLeave() {
-    showDiscordTooltip = false;
+  function toggleDiscordTooltip() {
+    showDiscordTooltip = !showDiscordTooltip;
   }
 
   async function copyDiscord() {
@@ -36,8 +32,8 @@
       <button
         class="relative"
         on:click={copyDiscord}
-        on:mouseenter={onDiscordMouseEnter}
-        on:mouseleave={onDiscordMouseLeave}
+        on:mouseenter={toggleDiscordTooltip}
+        on:mouseleave={toggleDiscordTooltip}
       >
         {#if showDiscordTooltip}
           <div class="tooltip flex -top-[42px] -left-14 min-w-[137px] justify-center" transition:fade={{ duration: 75 }}>

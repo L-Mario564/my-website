@@ -31,5 +31,5 @@
   </button>
 </div>
 <a href="mailto:ka.mario564@gmail.com" class="btn btn-gradient w-full">
-  <Mail width={18} height={18} class="stroke-black mr-2" /> Email
+  <Mail size={18} class="stroke-black mr-2" /> Email
 </a>

@@ -8,20 +8,12 @@
   let showTechName = false;
   let showExperience = false;
 
-  function onImageMouseEnter() {
-    showTechName = true;
+  function toggleTechName() {
+    showTechName = !showTechName;
   }
 
-  function onImageMouseLeave() {
-    showTechName = false;
-  }
-
-  function onExpLevelMouseEnter() {
-    showExperience = true;
-  }
-
-  function onExpLevelMouseLeave() {
-    showExperience = false;
+  function toggleExperience() {
+    showExperience = !showExperience;
   }
 </script>
 
@@ -39,11 +31,11 @@
       width={48}
       height={48}
       class="scale-90 hover:scale-100 duration-300"
-      on:mouseenter={onImageMouseEnter}
-      on:mouseleave={onImageMouseLeave}
+      on:mouseenter={toggleTechName}
+      on:mouseleave={toggleTechName}
     />
   </a>
-  <div role="presentation" class="flex justify-center gap-1 items-center mt-2" on:mouseenter={onExpLevelMouseEnter} on:mouseleave={onExpLevelMouseLeave}>
+  <div role="presentation" class="flex justify-center gap-1 items-center mt-2" on:mouseenter={toggleExperience} on:mouseleave={toggleExperience}>
     {#if showExperience}
       <div class="tooltip top-3" transition:fade={{ duration: 75 }}>
         <div class="tooltip-caret" />
