@@ -4,22 +4,22 @@ import Website from '../components/Website.svelte';
 import { websites } from '../content/websites';
 ---
 
-<Layout title="Mario564's Portfolio">
+<Layout title="Mario564's Projects">
   <div class="flex justify-center mt-16 px-content relative overflow-hidden">
     <div class="max-w-[1000px] flex flex-col items-center z-[6] relative my-16">
       <h1 class="h1 animate-h1 relative">Projects</h1>
-      <p id="projects-p" class="p mt-4">A list of projects I've developed where I've made some sort of contribution or built completely on my own.</>
-      <h2 id="websites-h2" class="h2 opacity-0 relative mt-8">Websites</h2>
-      <div class="flex gap-4 flex-wrap mt-4 justify-center">
-        {websites.map((site) => <Website website={site} client:visible />)}
+      <h2 id="websites-h2" class="h2 opacity-0 relative mt-12">Websites</h2>
+      <p id="websites-p" class="p text-center mt-4">Websites and web apps where I've contributed significantly to its frontend design.</p>
+      <div class="flex gap-8 flex-wrap mt-8 justify-center">
+        {websites.map((site) => <Website website={site} client:only="svelte" />)}
       </div>
     </div>
   </div>
 </Layout>
 
 <script>
-  const projectsP = document.querySelector('#projects-p') as HTMLParagraphElement | null;
   const websitesH2 = document.querySelector('#websites-h2') as HTMLHeadingElement | null;
+  const websitesP = document.querySelector('#websites-p') as HTMLParagraphElement | null;
 
   const observer2 = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -28,6 +28,10 @@ import { websites } from '../content/websites';
       if (entry.target.isEqualNode(websitesH2) && websitesH2) {
         websitesH2.classList.add('animate-h2-to-t');
       }
+
+      if (entry.target.isEqualNode(websitesP) && websitesP) {
+        websitesP.classList.add('animate-p');
+      }
     });
   }, {
     threshold: 1,
@@ -35,8 +39,8 @@ import { websites } from '../content/websites';
   });
 
   [
-    projectsP,
-    websitesH2
+    websitesH2,
+    websitesP,
   ].forEach((element) => {
     if (element) {
       observer2.observe(element);

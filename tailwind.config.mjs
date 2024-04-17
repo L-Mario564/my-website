@@ -32,13 +32,14 @@ export default {
         'landing-title': 'fade-in 0.85s forwards ease-out',
         'landing-header-blur': 'fade-in 1.75s forwards ease-out',
         'landing-welcome': 'fade-in-slide-to-l-lg 0.85s forwards ease-out',
-        'paragraph': 'fade-in-slide-to-t-sm 0.75s forwards ease-out',
-        'h1': 'fade-in-slide-to-t-sm 0.85s forwards ease-out',
+        'paragraph': 'fade-in-slide-to-t-sm 0.65s forwards ease-out',
+        'h1': 'fade-in-slide-to-t-sm 0.65s forwards ease-out',
         'h2-to-t': 'fade-in-slide-to-t-xs 0.65s forwards ease-out',
         'h2-to-l': 'fade-in-slide-to-l-xs 0.65s forwards ease-out',
         'p': 'fade-in 0.65s forwards ease-out',
         'slideshow-img-in': 'fade-in 0.3s forwards ease-out',
-        'slideshow-img-out': 'fade-out 0.3s forwards ease-out'
+        'slideshow-img-out': 'fade-out 0.3s forwards ease-out',
+        'project': 'fade-in-slide-to-t-sm 0.65s forwards ease-out',
       },
       keyframes: {
         'fade-in': {

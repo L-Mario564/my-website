@@ -7,14 +7,33 @@
   import Github from './icons/Github.svelte';
   import { portal } from 'svelte-portal';
   import { fly, fade } from 'svelte/transition';
+  import { onMount } from 'svelte';
   import type { Website } from '../utils/types';
 
   export let website: Website;
   let showDetails = false;
   let showImgTooltip = false;
-  let showImages = true;
+  let showImages = false;
   let currentImage = 1;
   let animateImg = false;
+  let websiteContainer: HTMLDivElement | undefined;
+
+  onMount(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      console.log(entry)
+      if (!entry.isIntersecting || !websiteContainer) return;
+      websiteContainer.classList.add('animate-project');
+    }, {
+      threshold: 1,
+      rootMargin: '0px 0px 0px 0px'
+    });
+
+    if (websiteContainer) {
+      observer.observe(websiteContainer);
+    }
+
+    return () => observer.disconnect();
+  });
 
   function toggleDetails() {
     showDetails = !showDetails;
@@ -51,6 +70,14 @@
       }, 150);
     }
   }
+
+  $: {
+    if (showImages) {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflowY = 'auto';
+    }
+  }
 </script>
 
 {#if showImages}
@@ -79,12 +106,12 @@
     </div>
   </div>
 {/if}
-<div role="presentation" class="relative w-96" on:mouseenter={toggleDetails} on:mouseleave={toggleDetails}>
+<div role="presentation" class="relative w-96 opacity-0" on:mouseenter={toggleDetails} on:mouseleave={toggleDetails} bind:this={websiteContainer}>
   {#if showDetails}
-    <div transition:fade={{ duration: 300 }} class="absolute h-full top-0 left-0 z-[12] p-4">
+    <div transition:fade={{ duration: 300 }} class="absolute w-full h-full top-0 left-0 z-[12] p-4">
       <strong class="text-white font-bold text-xl">{website.name}</strong>
       <div class="w-full h-[2px] rounded-full bg-gradient-to-r from-purple-500 to-orange-500 mt-1 mb-2" />
-      <p>{website.description}</p>
+      <p class="text-sm">{website.description}</p>
       <div class="absolute bottom-0 left-0 p-4 flex flex-col gap-1">
         {#if website.url}
           <div class="flex text-sm items-center gap-2">
