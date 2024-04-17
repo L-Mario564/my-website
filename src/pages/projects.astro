@@ -1,0 +1,45 @@
+---
+import Layout from '../components/Layout.astro';
+import Website from '../components/Website.svelte';
+import { websites } from '../content/websites';
+---
+
+<Layout title="Mario564's Portfolio">
+  <div class="flex justify-center mt-16 px-content relative overflow-hidden">
+    <div class="max-w-[1000px] flex flex-col items-center z-[6] relative my-16">
+      <h1 class="h1 animate-h1 relative">Projects</h1>
+      <p id="projects-p" class="p mt-4">A list of projects I've developed where I've made some sort of contribution or built completely on my own.</>
+      <h2 id="websites-h2" class="h2 opacity-0 relative mt-8">Websites</h2>
+      <div class="flex gap-4 flex-wrap mt-4 justify-center">
+        {websites.map((site) => <Website website={site} client:visible />)}
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const projectsP = document.querySelector('#projects-p') as HTMLParagraphElement | null;
+  const websitesH2 = document.querySelector('#websites-h2') as HTMLHeadingElement | null;
+
+  const observer2 = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      if (entry.target.isEqualNode(websitesH2) && websitesH2) {
+        websitesH2.classList.add('animate-h2-to-t');
+      }
+    });
+  }, {
+    threshold: 1,
+    rootMargin: '0px 0px -16px 0px'
+  });
+
+  [
+    projectsP,
+    websitesH2
+  ].forEach((element) => {
+    if (element) {
+      observer2.observe(element);
+    }
+  });
+</script>

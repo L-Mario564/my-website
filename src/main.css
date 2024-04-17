@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer components {
+  .h1 {
+    @apply text-4xl sm:text-5xl sm:leading-tight font-bold inline-block bg-gradient-to-tr from-purple-500 to-orange-500 text-transparent bg-clip-text w-max;
+  }
+
   .h2 {
     @apply text-3xl sm:text-4xl font-bold inline-block bg-gradient-to-b from-white from-[50%] to-zinc-500 text-transparent bg-clip-text w-max;
   }
@@ -25,6 +29,10 @@
 
   .btn {
     @apply flex justify-center items-center relative h-max text-black font-bold px-4 py-2 duration-300 rounded-md hover:brightness-[1.15] active:scale-110;
+  }
+
+  .btn-icon {
+    @apply flex justify-center items-center relative h-max text-black font-bold p-2 duration-300 rounded-md hover:brightness-[1.15] active:scale-110;
   }
 
   .btn-white {
