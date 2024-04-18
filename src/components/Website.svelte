@@ -83,7 +83,7 @@
   <div use:portal transition:fly={{ duration: 300, y: 100 }} class="fixed w-screen h-screen max-w-full max-h-full top-0 left-0 z-[60] bg-woodsmoke-950/75 flex justify-center items-center overflow-hidden p-8 pb-[4.5rem]">
     <div role="presentation" on:click={toggleImages} class="absolute w-full h-full top-0 left-0 z-[1]" />
     <img
-      src={`/websites/${website.img.folder}/${currentImage}.png`}
+      src={`/websites/${website.img.folder}/${currentImage}.jpg`}
       alt={`website screenshot ${currentImage}`}
       class={`w-auto h-auto max-w-full max-h-full z-[2] rounded-md ${animateImg ? 'animate-slideshow-img-out' : 'animate-slideshow-img-in'}`}
     />
@@ -140,7 +140,7 @@
   {/if}
   <div class="w-full h-full bg-gradient-to-t from-woodsmoke-950 to-[33%] absolute z-[11] left-0 bottom-0 pointer-events-none" />
   <img
-    src={`/websites/${website.img.folder}/1.png`}
+    src={`/websites/${website.img.folder}/1.jpg`}
     alt="website screenshot"
     class={`aspect-[16/9] w-full rounded-md duration-300  ${showDetails ? 'opacity-15': 'opacity-100'}`}
   />
