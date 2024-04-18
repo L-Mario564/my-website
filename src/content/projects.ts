@@ -1,4 +1,4 @@
-import type { Website } from '../utils/types';
+import type { Website, Tool, OSSProject } from '../utils/types';
 
 export const websites: Website[] = [{
   name: 'EST Summer 2022',
@@ -58,3 +58,28 @@ export const websites: Website[] = [{
     count: 4
   }
 }].reverse();
+
+export const tools: Tool[] = [{
+  name: 'osu.js',
+  description: 'An unofficial Javascript and Typescript SDK for the browser-facing portion of osu! with type safety in mind.',
+  url: 'https://osujs.mario564.com',
+  repo: 'https://github.com/L-Mario564/osu.js'
+}, {
+  name: 'Drizzle DBML Generator',
+  description: 'Generate DBML markup from your schema defined with Drizzle ORM.',
+  repo: 'https://github.com/L-Mario564/drizzle-dbml-generator'
+}].reverse();
+
+export const oss: OSSProject[] = [{
+  name: 'Drizzle ORM',
+  description: 'Headless ORM for NodeJS, TypeScript and JavaScript.',
+  repo: 'https://github.com/drizzle-team/drizzle-orm',
+  contributions: 5,
+  url: 'https://orm.drizzle.team'
+}, {
+  name: 'Lucia',
+  description: 'Auth library written in TypeScript that abstracts away the complexity of handling sessions.',
+  repo: 'https://github.com/lucia-auth/lucia',
+  contributions: 2,
+  url: 'https://lucia-auth.com'
+}];

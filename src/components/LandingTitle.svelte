@@ -1,7 +1,6 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
 
-  let letterWidth = 18.75; // Pixels
   const transitionTime = 50; // Milliseconds
   const titles = [
     'Full-stack web developer',
@@ -9,6 +8,7 @@
     'Music enjoyer',
     'Curiosity-driven learner'
   ];
+  let letterWidth = 18.75; // Pixels
   let animate = false;
   let animation: 'type' | 'untype' = 'type';
   let titleIndex = titles.length - 1;

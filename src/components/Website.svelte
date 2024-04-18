@@ -20,7 +20,6 @@
 
   onMount(() => {
     const observer = new IntersectionObserver(([entry]) => {
-      console.log(entry)
       if (!entry.isIntersecting || !websiteContainer) return;
       websiteContainer.classList.add('animate-project');
     }, {
@@ -106,7 +105,7 @@
     </div>
   </div>
 {/if}
-<div role="presentation" class="relative w-96 opacity-0" on:mouseenter={toggleDetails} on:mouseleave={toggleDetails} bind:this={websiteContainer}>
+<div role="presentation" class="relative w-[26rem] opacity-0" on:mouseenter={toggleDetails} on:mouseleave={toggleDetails} bind:this={websiteContainer}>
   {#if showDetails}
     <div transition:fade={{ duration: 300 }} class="absolute w-full h-full top-0 left-0 z-[12] p-4">
       <strong class="text-white font-bold text-xl">{website.name}</strong>
@@ -128,9 +127,9 @@
       </div>
       <div class="absolute bottom-0 right-0 p-4">
         {#if showImgTooltip}
-          <div class="tooltip -top-[26px] -left-9" transition:fade={{ duration: 75 }}>
+          <div class="tooltip -top-[26px] -left-[21px] z-[2]" transition:fade={{ duration: 75 }}>
             <div class="tooltip-caret" />
-            View more screenshots
+            View screenshots
           </div>
         {/if}
         <button class="btn-icon btn-gradient" on:click={toggleImages} on:mouseenter={toggleImgsBtnTooltip} on:mouseleave={toggleImgsBtnTooltip}>
