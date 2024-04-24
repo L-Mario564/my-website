@@ -62,12 +62,8 @@
     animateImg = true;
   }
 
-  $: {
-    if (animateImg) {
-      setTimeout(() => {
-        animateImg = false;
-      }, 150);
-    }
+  function onImgLoad() {
+    animateImg = false;
   }
 
   $: {
@@ -86,6 +82,7 @@
       src={`/websites/${website.img.folder}/${currentImage}.jpg`}
       alt={`website screenshot ${currentImage}`}
       class={`w-auto h-auto max-w-full max-h-full z-[2] rounded-md ${animateImg ? 'animate-slideshow-img-out' : 'animate-slideshow-img-in'}`}
+      on:load={onImgLoad}
     />
     <div class="flex justify-center absolute bottom-4 left-0 w-full gap-4 z-[3]">
       <div class="bg-woodsmoke-900/75 rounded-full flex justify-center items-center w-10 h-10">
