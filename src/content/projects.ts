@@ -74,7 +74,7 @@ export const oss: OSSProject[] = [{
   name: 'Drizzle ORM',
   description: 'Headless ORM for NodeJS, TypeScript and JavaScript.',
   repo: 'https://github.com/drizzle-team/drizzle-orm',
-  contributions: 5,
+  contributions: 7,
   url: 'https://orm.drizzle.team'
 }, {
   name: 'Lucia',
