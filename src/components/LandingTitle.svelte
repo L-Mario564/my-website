@@ -54,9 +54,9 @@
   $: totalTransitionTime = title.length * transitionTime;
 </script>
 
-<div class="inline-block" style={`width: ${containerWidth}px; margin-left: ${letterWidth}px`}>
+<div class="flex" style={`width: ${containerWidth}px; margin-left: ${letterWidth}px`}>
   <span class={`inline-block overflow-hidden text-nowrap mr-[2px] w-0 ${animate ? (animation === 'type' ? 'animate-[type]' : 'animate-[untype]') : ''}`.trim()} style={animate ? `animation: ${animation} ${totalTransitionTime}ms steps(${title.length}) forwards` : ''}>
     {title}
   </span>
-  <span class="inline border-l-[3px] border-white animate-cursor-blink relative -top-[7px]" />
+  <span class="inline border-l-[3px] border-white animate-cursor-blink relative top-0" />
 </div>
