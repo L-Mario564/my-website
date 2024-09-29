@@ -7,9 +7,9 @@ import { websites, tools, oss } from '../content/projects';
 
 <Layout title="Mario564's Projects">
   <div class="flex justify-center mt-16 px-content relative overflow-hidden">
-    <div class="max-w-[1000px] flex flex-col items-center z-[6] relative my-16">
+    <div class="max-w-[1200px] flex flex-col items-center z-[6] relative my-16">
       <h1 class="h1 animate-h1 relative">Projects</h1>
-      <h2 id="websites-h2" class="h2 opacity-0 relative mt-16">Websites</h2>
+      <h2 id="websites-h2" class="h2 opacity-0 relative mt-8">Websites</h2>
       <p id="websites-p" class="p opacity-0 text-center mt-4">Websites and web apps where I've contributed significantly to its frontend design.</p>
       <div class="flex gap-8 flex-wrap mt-8 justify-center min-h-screen">
         {websites.map((site) => <Website website={site} client:only="svelte" />)}

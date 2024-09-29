@@ -102,7 +102,7 @@
     </div>
   </div>
 {/if}
-<div role="presentation" class="relative w-[26rem] opacity-0" on:mouseenter={toggleDetails} on:mouseleave={toggleDetails} bind:this={websiteContainer}>
+<div role="presentation" class="relative w-[27rem] opacity-0" on:mouseenter={toggleDetails} on:mouseleave={toggleDetails} bind:this={websiteContainer}>
   {#if showDetails}
     <div transition:fade={{ duration: 300 }} class="absolute w-full h-full top-0 left-0 z-[12] p-4">
       <strong class="text-white font-bold text-xl">{website.name}</strong>

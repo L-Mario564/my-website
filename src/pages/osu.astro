@@ -1,11 +1,61 @@
 ---
 import Layout from '../components/Layout.astro';
+import Tournament from '../components/Tournament.svelte';
+import { tournamentsPlayed } from '../content/tournaments';
 ---
 
-<Layout title="Mario564's Projects">
+<Layout title="Mario564's osu! Tournament History">
   <div class="flex justify-center mt-16 px-content relative overflow-hidden">
-    <div class="max-w-[1000px] flex flex-col items-center z-[6] relative my-16">
-      <p>This page is under construction. Come back sometime later.</p>
+    <div class="max-w-[1200px] flex flex-col items-center z-[6] relative my-16">
+      <h1 class="h1 animate-h1 relative">osu! Tournaments</h1>
+      <p id="intro-p1" class="p opacity-0 mt-8 text-justify">You may or may not know me for playing osu! and more specifically, participating and staffing in the community's tournaments. Here's a list of tournaments I've participated in and contributed to.</p>
+      <p id="intro-p2" class="p opacity-0 mt-2 text-justify italic text-zinc-500">
+        <strong>DISCLAIMER:</strong> Any graphics used in this page belongs to its respective owners unless stated otherwise.
+      </p>
+      <h2 id="tournaments-played-h2" class="h2 opacity-0 relative mt-16">Tournaments Played</h2>
+      <div class="flex gap-6 flex-wrap mt-8 justify-center min-h-screen">
+        {tournamentsPlayed.map((tournament) => <Tournament tournament={{
+          ...tournament,
+          type: 'played'
+        }} client:only="svelte" />)}
+      </div>
     </div>
   </div>
 </Layout>
+
+<script>
+  const introP1 = document.querySelector('#intro-p1') as HTMLParagraphElement | null;
+  const introP2 = document.querySelector('#intro-p2') as HTMLParagraphElement | null;
+  const tournamentsPlayedH2 = document.querySelector('#tournaments-played-h2') as HTMLHeadingElement | null;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      
+      if (entry.target.isEqualNode(introP1) && introP1) {
+        introP1.classList.add('animate-p');
+      }
+
+      if (entry.target.isEqualNode(introP2) && introP2) {
+        introP2.classList.add('animate-p');
+      }
+
+      if (entry.target.isEqualNode(tournamentsPlayedH2) && tournamentsPlayedH2) {
+        tournamentsPlayedH2.classList.add('animate-h2-to-t');
+      }
+    });
+  }, {
+    threshold: 1,
+    rootMargin: '0px 0px -16px 0px'
+  });
+
+  [
+    introP1,
+    introP2,
+    tournamentsPlayedH2
+  ].forEach((element) => {
+    if (element) {
+      observer.observe(element);
+    }
+  });
+</script>

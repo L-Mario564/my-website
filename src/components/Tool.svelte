@@ -4,11 +4,12 @@
   import Github from './icons/Github.svelte';
   import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
+  import { createToggle } from '../utils/stores';
   import type { Tool, OSSProject } from '../utils/types';
 
   export let tool: Tool | OSSProject;
-  let showContributionsTooltip = false;
   let toolContainer: HTMLDivElement | undefined;
+  const showContributionsTooltip = createToggle(false);
 
   onMount(() => {
     const observer = new IntersectionObserver(([entry]) => {
@@ -29,10 +30,6 @@
   function isOSSProject(tool: Tool | OSSProject): tool is OSSProject {
     return !!(tool as OSSProject).contributions;
   }
-
-  function toggleContributionsTooltip() {
-    showContributionsTooltip = !showContributionsTooltip;
-  }
 </script>
 
 <div class="relative w-96 h-48 bg-gradient-to-tr from-purple-500/10 via-woodsmoke-900/10 via-[50%] to-orange-500/10 p-4 rounded-md opacity-0" bind:this={toolContainer}>
@@ -50,7 +47,7 @@
     </a>
   </div>
   {#if isOSSProject(tool)}
-    {#if showContributionsTooltip}
+    {#if $showContributionsTooltip}
       <div class="tooltip bottom-[58px] right-8" transition:fade={{ duration: 75 }}>
         <div class="tooltip-caret" />
         View pull requests
@@ -60,8 +57,8 @@
       href={`${tool.repo}/pulls?q=is%3Amerged+is%3Apr+author%3AL-Mario564`}
       target="_blank"
       class="absolute bottom-4 right-4 flex items-center gap-2 btn btn-gradient text-sm py-[6px] px-3"
-      on:mouseenter={toggleContributionsTooltip}
-      on:mouseleave={toggleContributionsTooltip}
+      on:mouseenter={showContributionsTooltip.toTrue}
+      on:mouseleave={showContributionsTooltip.toFalse}
     >
       <span>{tool.contributions} Contributions</span>
       <GitPullRequest size={16} class="stroke-black" />

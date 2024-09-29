@@ -36,7 +36,7 @@ export default {
         'h1': 'fade-in-slide-to-t-sm 0.65s forwards ease-out',
         'h2-to-t': 'fade-in-slide-to-t-xs 0.65s forwards ease-out',
         'h2-to-l': 'fade-in-slide-to-l-xs 0.65s forwards ease-out',
-        'p': 'fade-in 0.65s forwards ease-out',
+        'p': 'fade-in 0.65s forwards ease-in',
         'slideshow-img-in': 'fade-in 0.3s forwards ease-out',
         'slideshow-img-out': 'fade-out 0.3s forwards ease-out',
         'project': 'fade-in-slide-to-t-sm 0.65s forwards ease-out',

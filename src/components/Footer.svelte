@@ -26,7 +26,7 @@
 </script>
 
 <footer class="border-t border-white/25 py-8 px-content flex justify-center">
-  <div class="max-w-[1000px] w-full flex max-xs:flex-col-reverse xs:grid xs:grid-cols-[max-content_1fr] max-xs:justify-center items-center">
+  <div class="max-w-[1200px] w-full flex max-xs:flex-col-reverse xs:grid xs:grid-cols-[max-content_1fr] max-xs:justify-center items-center">
     <span class="text-zinc-500 flex justify-center h-full">Copyright © {new Date().getFullYear()} Mario564</span>
     <div class="flex mb-4 xs:mt-0 justify-center xs:justify-end gap-4">
       <button
