@@ -1,11 +1,13 @@
 ---
 import Layout from '../components/Layout.astro';
+import Glow from '../components/Glow.svelte';
 import Website from '../components/Website.svelte';
 import Tool from '../components/Tool.svelte';
 import { websites, tools, oss } from '../content/projects';
 ---
 
 <Layout title="Mario564's Projects">
+  <Glow client:load />
   <div class="flex justify-center mt-16 px-content relative overflow-hidden">
     <div class="max-w-[1200px] flex flex-col items-center z-[6] relative my-16">
       <h1 class="h1 animate-h1 relative">Projects</h1>
