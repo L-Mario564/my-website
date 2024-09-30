@@ -4,7 +4,7 @@
   let animated = false;
 
   onMount(() => {
-    animated = window !== undefined && navigator.hardwareConcurrency > 4;
+    animated = window !== undefined && navigator.hardwareConcurrency > 6;
   });
 </script>
 

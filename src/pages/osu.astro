@@ -2,7 +2,7 @@
 import Layout from '../components/Layout.astro';
 import Glow from '../components/Glow.svelte';
 import Tournament from '../components/Tournament.svelte';
-import { tournamentsPlayed } from '../content/tournaments';
+import { tournamentsPlayed, tournamentsStaffed } from '../content/tournaments';
 ---
 
 <Layout title="Mario564's osu! Tournament History">
@@ -14,6 +14,13 @@ import { tournamentsPlayed } from '../content/tournaments';
       <p id="intro-p2" class="p opacity-0 mt-2 text-justify italic text-zinc-500">
         <strong>DISCLAIMER:</strong> Any graphics used in this page belongs to its respective owners unless stated otherwise.
       </p>
+      <h2 id="tournaments-staffed-h2" class="h2 opacity-0 relative mt-16">Tournaments Staffed</h2>
+      <div class="flex gap-6 flex-wrap mt-8 justify-center min-h-screen">
+        {tournamentsStaffed.map((tournament) => <Tournament tournament={{
+          ...tournament,
+          type: 'staffed'
+        }} client:only="svelte" />)}
+      </div>
       <h2 id="tournaments-played-h2" class="h2 opacity-0 relative mt-16">Tournaments Played</h2>
       <div class="flex gap-6 flex-wrap mt-8 justify-center min-h-screen">
         {tournamentsPlayed.map((tournament) => <Tournament tournament={{
@@ -28,6 +35,7 @@ import { tournamentsPlayed } from '../content/tournaments';
 <script>
   const introP1 = document.querySelector('#intro-p1') as HTMLParagraphElement | null;
   const introP2 = document.querySelector('#intro-p2') as HTMLParagraphElement | null;
+  const tournamentsStaffedH2 = document.querySelector('#tournaments-staffed-h2') as HTMLHeadingElement | null;
   const tournamentsPlayedH2 = document.querySelector('#tournaments-played-h2') as HTMLHeadingElement | null;
 
   const observer = new IntersectionObserver((entries) => {
@@ -42,6 +50,10 @@ import { tournamentsPlayed } from '../content/tournaments';
         introP2.classList.add('animate-p');
       }
 
+      if (entry.target.isEqualNode(tournamentsStaffedH2) && tournamentsStaffedH2) {
+        tournamentsStaffedH2.classList.add('animate-h2-to-t');
+      }
+
       if (entry.target.isEqualNode(tournamentsPlayedH2) && tournamentsPlayedH2) {
         tournamentsPlayedH2.classList.add('animate-h2-to-t');
       }
@@ -54,6 +66,7 @@ import { tournamentsPlayed } from '../content/tournaments';
   [
     introP1,
     introP2,
+    tournamentsStaffedH2,
     tournamentsPlayedH2
   ].forEach((element) => {
     if (element) {
