@@ -34,7 +34,7 @@
   <div class="absolute w-full h-full top-0 left-0 z-[12] p-4">
     <div class="relative h-[28px]">
       {#if $viewTeams && tournament.type === 'played'}
-        <strong class="text-white font-bold text-xl absolute top-0 left-0" transition:fade={{ duration: 150 }}>Team: {tournament.team?.name}</strong>
+        <strong class="text-white font-bold text-xl absolute top-0 left-0" transition:fade={{ duration: 150 }}>{tournament.team?.name}</strong>
       {:else}
         <strong class="text-white font-bold text-xl absolute top-0 left-0" transition:fade={{ duration: 150 }}>{tournament.name}</strong>
       {/if}

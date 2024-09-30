@@ -8,6 +8,7 @@ export interface Technology {
 }
 
 interface Project {
+  id: number;
   name: string;
   description: string;
   url?: string;
@@ -32,15 +33,16 @@ export interface OSSProject extends Project {
 }
 
 interface Tournament {
+  id: number;
   name: string;
   date: string;
-  forumPostId: string;
   img: string;
 }
 
-type StaffRole = 'Spreadsheeter' | 'GFX Designer' | 'Referee' | 'Front-end Developer' | 'Backend Developer';
+type StaffRole = 'Spreadsheeter' | 'GFX Designer' | 'Referee' | 'Front-end Developer' | 'Backend Developer' | 'Playtester' | 'Translator';
 
 export interface TournamentPlayed extends Tournament {
+  forumPostId: string;
   format: string;
   participantCount: number;
   placement: {
@@ -59,6 +61,9 @@ export interface TournamentPlayed extends Tournament {
 
 export interface TournamentStaffed extends Tournament {
   roles: StaffRole[];
+  forumPostId?: string;
+  spreadsheetId?: string;
+  websiteId?: number;
 }
 
 export interface TournamentBanner {
