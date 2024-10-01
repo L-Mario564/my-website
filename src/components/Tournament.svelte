@@ -15,7 +15,8 @@
   export let tournament: Simplify<TournamentPlayed & { type: 'played' }> | Simplify<(TournamentStaffed & { type: 'staffed' })>;
   let tournamentContainer: HTMLDivElement | undefined;
   let btn: HTMLButtonElement | undefined;
-  const tab = createToggle(false);
+  let usingTab = false;
+  let usedSpaceToOpenSlideshow = false;
   const showDetails = createToggle(false);
   const showViewTooltip = createToggle(false);
   const showTeams = createToggle(false);
@@ -39,20 +40,34 @@
 
   function onBtnBlur() {
     setTimeout(() => {
-      if (!$tab) {
+      if (!usingTab) {
         showDetails.toFalse();
       }
-    }, 5);
+    }, 50);
   }
 
   function onBtnKeydown(e: KeyboardEvent) {
     if (e.key !== 'Tab') return;
-    tab.set(!e.shiftKey);
+    usingTab = !e.shiftKey;
+  }
+
+  function onScreenshotsKeydown(e: KeyboardEvent) {
+    setTimeout(() => {
+      usedSpaceToOpenSlideshow = e.key === ' ';
+    }, 100);
+  }
+
+  function onScreenshotsClickBtn() {
+    showWebsiteScreenshots.toTrue();
+    usedSpaceToOpenSlideshow = false;
   }
 
   function onSlideshowClose() {
     showWebsiteScreenshots.toFalse();
-    btn?.focus();
+
+    if (usedSpaceToOpenSlideshow) {
+      btn?.focus();
+    }
   }
 
   $: hasTeam = tournament.type === 'played' && tournament.team;
@@ -150,7 +165,7 @@
             <Table2 size={18} class="stroke-black" />
           </a>
         {:else if hasTeam || hasWebsite}
-          <button class="btn-icon btn-gradient" on:click={tournament.type === 'played' ? showTeams.toggle : showWebsiteScreenshots.toggle} on:mouseenter={showViewTooltip.toTrue} on:mouseleave={showViewTooltip.toFalse} on:blur={showDetails.toFalse}>
+          <button class="btn-icon btn-gradient" on:click={tournament.type === 'played' ? showTeams.toggle : onScreenshotsClickBtn} on:mouseenter={showViewTooltip.toTrue} on:mouseleave={showViewTooltip.toFalse} on:keydown={onScreenshotsKeydown} on:blur={showDetails.toFalse}>
             {#if tournament.type === 'played'}
               {#if $showTeams}
                 <Trophy size={18} class="stroke-black" />

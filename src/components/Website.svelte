@@ -11,7 +11,8 @@
   export let website: Website;
   let websiteContainer: HTMLDivElement | undefined;
   let btn: HTMLButtonElement | undefined;
-  const tab = createToggle(false);
+  let usingTab = false;
+  let usedSpaceToOpenSlideshow = false;
   const showImgTooltip = createToggle(false);
   const showDetails = createToggle(false);
   const showScreenshots = createToggle(false);
@@ -36,20 +37,34 @@
 
   function onBtnBlur() {
     setTimeout(() => {
-      if (!$tab) {
+      if (!usingTab) {
         showDetails.toFalse();
       }
-    }, 5);
+    }, 50);
   }
 
   function onBtnKeydown(e: KeyboardEvent) {
     if (e.key !== 'Tab') return;
-    tab.set(!e.shiftKey);
+    usingTab = !e.shiftKey;
+  }
+
+  function onScreenshotsClickBtn() {
+    showScreenshots.toTrue();
+    usedSpaceToOpenSlideshow = false;
+  }
+
+  function onScreenshotsBtnKeydown(e: KeyboardEvent) {
+    setTimeout(() => {
+      usedSpaceToOpenSlideshow = e.key === ' ';
+    }, 100);
   }
 
   function onSlideshowClose() {
     showScreenshots.toFalse();
-    btn?.focus();
+
+    if (usedSpaceToOpenSlideshow) {
+      btn?.focus();
+    }
   }
 </script>
 
@@ -84,7 +99,7 @@
             View screenshots
           </div>
         {/if}
-        <button class="btn-icon btn-gradient" on:click={showScreenshots.toTrue} on:mouseenter={showImgTooltip.toTrue} on:mouseleave={showImgTooltip.toFalse} on:blur={showDetails.toFalse}>
+        <button class="btn-icon btn-gradient" on:click={onScreenshotsClickBtn} on:mouseenter={showImgTooltip.toTrue} on:mouseleave={showImgTooltip.toFalse} on:blur={showDetails.toFalse} on:keydown={onScreenshotsBtnKeydown}>
           <Image size={18} class="stroke-black" />
         </button>
       </div>
