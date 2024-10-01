@@ -14,6 +14,8 @@
 
   export let tournament: Simplify<TournamentPlayed & { type: 'played' }> | Simplify<(TournamentStaffed & { type: 'staffed' })>;
   let tournamentContainer: HTMLDivElement | undefined;
+  let btn: HTMLButtonElement | undefined;
+  const tab = createToggle(false);
   const showDetails = createToggle(false);
   const showViewTooltip = createToggle(false);
   const showTeams = createToggle(false);
@@ -34,12 +36,34 @@
 
     return () => observer.disconnect();
   });
+
+  function onBtnBlur() {
+    setTimeout(() => {
+      if (!$tab) {
+        showDetails.toFalse();
+      }
+    }, 5);
+  }
+
+  function onBtnKeydown(e: KeyboardEvent) {
+    if (e.key !== 'Tab') return;
+    tab.set(!e.shiftKey);
+  }
+
+  function onSlideshowClose() {
+    showWebsiteScreenshots.toFalse();
+    btn?.focus();
+  }
+
+  $: hasTeam = tournament.type === 'played' && tournament.team;
+  $: hasWebsite = tournament.type === 'staffed' && tournament.websiteId;
 </script>
 
 {#if $showWebsiteScreenshots && tournament.type === 'staffed'}
-  <Slideshow website={websites.find((website) => website.id === tournament.websiteId) ?? websites[0]} close={showWebsiteScreenshots.toFalse} />
+  <Slideshow website={websites.find((website) => website.id === tournament.websiteId) ?? websites[0]} close={onSlideshowClose} />
 {/if}
 <div role="presentation" class="relative w-[22.5rem] h-max opacity-0" on:mouseenter={showDetails.toTrue} on:mouseleave={showDetails.toFalse} bind:this={tournamentContainer}>
+  <button class="w-full h-0 pointer-events-none absolute bottom-0 left-0" on:focus={showDetails.toTrue} on:keydown={onBtnKeydown} on:blur={onBtnBlur} bind:this={btn} />
   <div class="absolute w-full h-full top-0 left-0 z-[12] p-4">
     <div class="relative h-[28px]">
       {#if $showTeams && tournament.type === 'played'}
@@ -99,12 +123,12 @@
           {@const forumPostUrl = `https://osu.ppy.sh/community/forums/topics/${tournament.forumPostId}`}
           <div class="flex text-sm items-center gap-2">
             <Osu w={16} h={16} class="stroke-white" />
-            <a href={forumPostUrl} target="_blank" class="hover:underline w-max">Forum Post</a>
+            <a href={forumPostUrl} target="_blank" class="hover:underline w-max" on:blur={(tournament.type === 'staffed' && tournament.spreadsheetId) || hasTeam || hasWebsite ? undefined : showDetails.toFalse}>Forum Post</a>
           </div>
         {/if}
       </div>
     {/if}
-    {#if $showDetails && ((tournament.type === 'played' && tournament.team) || tournament.type === 'staffed')}
+    {#if $showDetails && (hasTeam || tournament.type === 'staffed')}
       <div transition:fade={{ duration: 300 }} class="absolute bottom-0 right-0 p-4">
         {#if $showViewTooltip}
           <div class={`tooltip -top-[26px] z-[2] ${
@@ -122,11 +146,11 @@
         {/if}
         {#if tournament.type === 'staffed' && tournament.spreadsheetId}
           {@const spreadsheetUrl = `https://docs.google.com/spreadsheets/d/${tournament.spreadsheetId}`}
-          <a href={spreadsheetUrl} target="_blank" class="block btn-icon btn-gradient" on:mouseenter={showViewTooltip.toTrue} on:mouseleave={showViewTooltip.toFalse}>
+          <a href={spreadsheetUrl} target="_blank" class="block btn-icon btn-gradient" on:mouseenter={showViewTooltip.toTrue} on:mouseleave={showViewTooltip.toFalse} on:blur={showDetails.toFalse}>
             <Table2 size={18} class="stroke-black" />
           </a>
-        {:else if tournament.type === 'played' || tournament.websiteId}
-          <button class="btn-icon btn-gradient" on:click={tournament.type === 'played' ? showTeams.toggle : showWebsiteScreenshots.toggle} on:mouseenter={showViewTooltip.toTrue} on:mouseleave={showViewTooltip.toFalse}>
+        {:else if hasTeam || hasWebsite}
+          <button class="btn-icon btn-gradient" on:click={tournament.type === 'played' ? showTeams.toggle : showWebsiteScreenshots.toggle} on:mouseenter={showViewTooltip.toTrue} on:mouseleave={showViewTooltip.toFalse} on:blur={showDetails.toFalse}>
             {#if tournament.type === 'played'}
               {#if $showTeams}
                 <Trophy size={18} class="stroke-black" />

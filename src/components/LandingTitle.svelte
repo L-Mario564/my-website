@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte';
+  import { onMount } from 'svelte';
 
   const transitionTime = 50; // Milliseconds
   const titles = [
@@ -21,11 +21,9 @@
       animateTitle();
       animate = true;
     }, 1200);
-  });
 
-  onDestroy(() => {
-    window.removeEventListener('resize', windowResize);
-  })
+    return () => window.removeEventListener('resize', windowResize);
+  });
 
   function windowResize() {
     if (window.innerWidth < 450) {

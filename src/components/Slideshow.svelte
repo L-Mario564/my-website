@@ -5,6 +5,7 @@
   import { portal } from 'svelte-portal';
   import { fly } from 'svelte/transition';
   import { onMount } from 'svelte';
+  import { focusTrap } from '../utils/focus-trap';
   import type { Website } from '../utils/types';
 
   export let website: Website;
@@ -38,7 +39,7 @@
   }
 </script>
 
-<div use:portal transition:fly={{ duration: 300, y: 100 }} class="fixed w-screen h-screen max-w-full max-h-full top-0 left-0 z-[60] bg-woodsmoke-950/75 flex justify-center items-center overflow-hidden p-8 pb-[4.5rem]">
+<div use:portal use:focusTrap={true} transition:fly={{ duration: 300, y: 100 }} class="fixed w-screen h-screen max-w-full max-h-full top-0 left-0 z-[60] bg-woodsmoke-950/75 flex justify-center items-center overflow-hidden p-8 pb-[4.5rem]">
   <div role="presentation" on:click={close} class="absolute w-full h-full top-0 left-0 z-[1]" />
   <img
     src={`/websites/${website.img.folder}/${currentImage}.jpg`}

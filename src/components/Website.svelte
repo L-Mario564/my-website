@@ -10,11 +10,15 @@
 
   export let website: Website;
   let websiteContainer: HTMLDivElement | undefined;
+  let btn: HTMLButtonElement | undefined;
+  const tab = createToggle(false);
   const showImgTooltip = createToggle(false);
   const showDetails = createToggle(false);
   const showScreenshots = createToggle(false);
 
   onMount(() => {
+    if (window === undefined) return;
+
     const observer = new IntersectionObserver(([entry]) => {
       if (!entry.isIntersecting || !websiteContainer) return;
       websiteContainer.classList.add('animate-project');
@@ -29,12 +33,31 @@
 
     return () => observer.disconnect();
   });
+
+  function onBtnBlur() {
+    setTimeout(() => {
+      if (!$tab) {
+        showDetails.toFalse();
+      }
+    }, 5);
+  }
+
+  function onBtnKeydown(e: KeyboardEvent) {
+    if (e.key !== 'Tab') return;
+    tab.set(!e.shiftKey);
+  }
+
+  function onSlideshowClose() {
+    showScreenshots.toFalse();
+    btn?.focus();
+  }
 </script>
 
 {#if $showScreenshots}
-  <Slideshow website={website} close={showScreenshots.toFalse} />
+  <Slideshow website={website} close={onSlideshowClose} />
 {/if}
 <div role="presentation" class="relative w-[27rem] opacity-0" on:mouseenter={showDetails.toTrue} on:mouseleave={showDetails.toFalse} bind:this={websiteContainer}>
+  <button class="w-full h-0 pointer-events-none absolute bottom-0 left-0" on:focus={showDetails.toTrue} on:keydown={onBtnKeydown} on:blur={onBtnBlur} bind:this={btn} />
   {#if $showDetails}
     <div transition:fade={{ duration: 300 }} class="absolute w-full h-full top-0 left-0 z-[12] p-4">
       <strong class="text-white font-bold text-xl">{website.name}</strong>
@@ -61,7 +84,7 @@
             View screenshots
           </div>
         {/if}
-        <button class="btn-icon btn-gradient" on:click={showScreenshots.toTrue} on:mouseenter={showImgTooltip.toTrue} on:mouseleave={showImgTooltip.toFalse}>
+        <button class="btn-icon btn-gradient" on:click={showScreenshots.toTrue} on:mouseenter={showImgTooltip.toTrue} on:mouseleave={showImgTooltip.toFalse} on:blur={showDetails.toFalse}>
           <Image size={18} class="stroke-black" />
         </button>
       </div>

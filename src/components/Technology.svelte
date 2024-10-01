@@ -2,41 +2,34 @@
   import Star from 'lucide-svelte/icons/star';
   import Circle from 'lucide-svelte/icons/circle';
   import { fade } from 'svelte/transition';
+  import { createToggle } from '../utils/stores';
   import type { Technology } from '../utils/types';
 
   export let technology: Technology;
-  let showTechName = false;
-  let showExperience = false;
-
-  function toggleTechName() {
-    showTechName = !showTechName;
-  }
-
-  function toggleExperience() {
-    showExperience = !showExperience;
-  }
+  const showTechName = createToggle(false);
+  const showExperience = createToggle(false);
 </script>
 
 <div class="flex flex-col items-center relative bg-clip-padding border-2 p-4 border-transparent rounded-md bg-woodsmoke-950 before:absolute before:inset-0 before:-z-[1] before:-m-[2px] before:rounded-[inherit] before:bg-gradient-to-tr before:from-purple-500 before:to-orange-500">
-  {#if showTechName}
+  {#if $showTechName}
     <div class="tooltip -top-7" transition:fade={{ duration: 75 }}>
       <div class="tooltip-caret" />
       {technology.name}
     </div>
   {/if}
-  <a href={technology.website} target="_blank">
+  <a href={technology.website} target="_blank" on:focus={showTechName.toTrue} on:blur={showTechName.toFalse}>
     <img
       src={`/tech-logos/${technology.imgName}.png`}
       alt={technology.name}
       width={48}
       height={48}
       class="scale-90 hover:scale-100 duration-300"
-      on:mouseenter={toggleTechName}
-      on:mouseleave={toggleTechName}
+      on:mouseenter={showTechName.toTrue}
+      on:mouseleave={showTechName.toFalse}
     />
   </a>
-  <div role="presentation" class="flex justify-center gap-1 items-center mt-2" on:mouseenter={toggleExperience} on:mouseleave={toggleExperience}>
-    {#if showExperience}
+  <button class="flex justify-center gap-1 items-center mt-2" tabindex="0" on:focus={showExperience.toTrue} on:blur={showExperience.toFalse} on:mouseenter={showExperience.toTrue} on:mouseleave={showExperience.toFalse}>
+    {#if $showExperience}
       <div class="tooltip top-3" transition:fade={{ duration: 75 }}>
         <div class="tooltip-caret" />
         {#if technology.experience === 5}
@@ -58,5 +51,5 @@
     {#each new Array(5 - technology.experience) as  _}
       <Circle class="fill-white stroke-white opacity-25 stroke-2 w-1 h-1 m-1" />
     {/each}
-  </div>
+  </button>
 </div>
