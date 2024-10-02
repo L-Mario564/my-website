@@ -5,7 +5,7 @@
   import Slideshow from './Slideshow.svelte';
   import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
-  import { createToggle } from '../utils/stores';
+  import { createToggle, showGlow } from '../utils/stores';
   import type { Website } from '../utils/types';
 
   export let website: Website;
@@ -49,6 +49,7 @@
   }
 
   function onScreenshotsClickBtn() {
+    showGlow.set(false);
     showScreenshots.toTrue();
     usedSpaceToOpenSlideshow = false;
   }
@@ -60,6 +61,7 @@
   }
 
   function onSlideshowClose() {
+    showGlow.set(true);
     showScreenshots.toFalse();
 
     if (usedSpaceToOpenSlideshow) {

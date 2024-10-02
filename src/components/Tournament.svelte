@@ -8,7 +8,7 @@
   import Slideshow from './Slideshow.svelte';
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
-  import { createToggle } from '../utils/stores';
+  import { createToggle, showGlow } from '../utils/stores';
   import { websites } from '../content/projects';
   import type { TournamentPlayed, TournamentStaffed, Simplify } from '../utils/types';
 
@@ -58,11 +58,13 @@
   }
 
   function onScreenshotsClickBtn() {
+    showGlow.set(false);
     showWebsiteScreenshots.toTrue();
     usedSpaceToOpenSlideshow = false;
   }
 
   function onSlideshowClose() {
+    showGlow.set(true);
     showWebsiteScreenshots.toFalse();
 
     if (usedSpaceToOpenSlideshow) {

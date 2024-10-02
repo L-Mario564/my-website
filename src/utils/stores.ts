@@ -22,3 +22,5 @@ export function createToggle(initial: boolean) {
     toTrue
   };
 }
+
+export const showGlow = writable(false);

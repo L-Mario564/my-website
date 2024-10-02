@@ -1,16 +1,23 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { fade } from 'svelte/transition';
+  import { showGlow } from '../utils/stores';
 
-  let animated = false;
+  let animate = false;
 
   onMount(() => {
-    animated = window !== undefined && navigator.hardwareConcurrency > 6;
+    animate = window !== undefined && navigator.hardwareConcurrency > 6;
+    setTimeout(() => showGlow.set(true), 150);
+
+    return () => showGlow.set(false);
   });
 </script>
 
-<div class="absolute flex flex-col -z-[1] w-full !max-w-full items-center justify-center bg-transparent transition-bg overflow-hidden h-[60vh] top-0 pointer-events-none opacity-30">
-  <div class={`glow h-[inherit] pointer-events-none contain-strict absolute opacity-60 after:absolute after:inset-0 after:mix-blend-difference ${animated ? 'glow-animated' : 'glow-static'}`} />
-</div>
+{#if $showGlow}
+  <div in:fade={{ duration: 300, delay: 50 }} out:fade={{ duration: 50 }} class="absolute flex flex-col -z-[1] w-full !max-w-full items-center justify-center bg-transparent transition-bg overflow-hidden h-[60vh] top-0 pointer-events-none opacity-30">
+    <div class={`glow h-[inherit] pointer-events-none contain-strict absolute opacity-60 after:absolute after:inset-0 after:mix-blend-difference ${animate && $showGlow ? 'glow-animated' : 'glow-static'}`} />
+  </div>
+{/if}
 
 <style scoped>
   .glow {

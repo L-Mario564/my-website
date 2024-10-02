@@ -2,8 +2,9 @@
   import X from 'lucide-svelte/icons/x';
   import ChevronLeft from 'lucide-svelte/icons/chevron-left';
   import ChevronRight from 'lucide-svelte/icons/chevron-right';
+  import LoaderCircle from 'lucide-svelte/icons/loader-circle';
   import { portal } from 'svelte-portal';
-  import { fly } from 'svelte/transition';
+  import { fly, fade } from 'svelte/transition';
   import { onMount } from 'svelte';
   import { focusTrap } from '../utils/focus-trap';
   import type { Website } from '../utils/types';
@@ -11,6 +12,7 @@
   export let website: Website;
   export let close: () => void;
   let currentImage = 1;
+  let loading = true;
   let animateImg = false;
 
   onMount(() => {
@@ -36,6 +38,7 @@
 
   function onImgLoad() {
     animateImg = false;
+    loading = false;
   }
 </script>
 
@@ -47,6 +50,11 @@
     class={`w-auto h-auto max-w-full max-h-full z-[2] rounded-md ${animateImg ? 'animate-slideshow-img-out' : 'animate-slideshow-img-in'}`}
     on:load={onImgLoad}
   />
+  {#if loading}
+    <div transition:fade={{ duration: 300 }} class="absolute z-[3]">
+      <LoaderCircle size={64} class="stroke-white animate-spin" />
+    </div>
+  {/if}
   <div class="flex justify-center absolute bottom-4 left-0 w-full gap-4 z-[3]">
     <div class="bg-woodsmoke-900/75 rounded-full flex justify-center items-center w-10 h-10">
       <button class="rounded-full duration-300 w-8 h-8 flex justify-center items-center hover:bg-white/15" on:click={close}>
