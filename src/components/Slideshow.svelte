@@ -21,11 +21,11 @@
 
   onMount(() => {
     document.body.style.overflowY = 'hidden';
-    return () => document.body.style.overflowY = 'auto';
+    return () => (document.body.style.overflowY = 'auto');
   });
 
   function previousImage() {
-    setTimeout(() => {      
+    setTimeout(() => {
       currentSrc = previousSrc();
     }, 150);
 
@@ -33,7 +33,7 @@
   }
 
   function nextImage() {
-    setTimeout(() => {      
+    setTimeout(() => {
       currentSrc = nextSrc();
     }, 150);
 
@@ -46,11 +46,16 @@
   }
 </script>
 
-<div use:portal use:focusTrap={true} transition:fly={{ duration: 300, y: 100 }} class="fixed w-screen h-screen max-w-full max-h-full top-0 left-0 z-[60] bg-woodsmoke-950/75 flex justify-center items-center overflow-hidden p-8 pb-[4.5rem]">
+<div
+  use:portal
+  use:focusTrap={true}
+  transition:fly={{ duration: 300, y: 100 }}
+  class="fixed w-screen h-screen max-w-full max-h-full top-0 left-0 z-[60] bg-woodsmoke-950/75 flex justify-center items-center overflow-hidden p-8 pb-[4.5rem]"
+>
   <div role="presentation" on:click={close} class="absolute w-full h-full top-0 left-0 z-[1]" />
   <img
     src={currentSrc}
-    alt={alt}
+    {alt}
     class={`w-auto h-auto max-w-full max-h-full z-[2] rounded-md ${animateImg ? 'animate-slideshow-img-out' : 'animate-slideshow-img-in'}`}
     on:load={onImgLoad}
   />
@@ -61,16 +66,25 @@
   {/if}
   <div class="flex justify-center absolute bottom-4 left-0 w-full gap-4 z-[3]">
     <div class="bg-woodsmoke-900/75 rounded-full flex justify-center items-center w-10 h-10">
-      <button class="rounded-full duration-300 w-8 h-8 flex justify-center items-center hover:bg-white/15" on:click={close}>
+      <button
+        class="rounded-full duration-300 w-8 h-8 flex justify-center items-center hover:bg-white/15"
+        on:click={close}
+      >
         <X size={20} class="stroke-white" />
       </button>
     </div>
     <div class="bg-woodsmoke-900/75 rounded-full flex items-center h-10 p-1 gap-2">
-      <button class="rounded-full duration-300 w-8 h-8 flex justify-center items-center hover:bg-white/15" on:click={previousImage}>
+      <button
+        class="rounded-full duration-300 w-8 h-8 flex justify-center items-center hover:bg-white/15"
+        on:click={previousImage}
+      >
         <ChevronLeft size={20} class="stroke-white" />
       </button>
       <span class="inline-block">{currentNumber} / {total}</span>
-      <button class="rounded-full duration-300 w-8 h-8 flex justify-center items-center hover:bg-white/15" on:click={nextImage}>
+      <button
+        class="rounded-full duration-300 w-8 h-8 flex justify-center items-center hover:bg-white/15"
+        on:click={nextImage}
+      >
         <ChevronRight size={20} class="stroke-white" />
       </button>
     </div>

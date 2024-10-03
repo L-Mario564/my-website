@@ -12,17 +12,24 @@ import { websites, tools, oss } from '../content/projects';
     <div class="max-w-[1200px] flex flex-col items-center z-[6] relative my-16">
       <h1 class="h1 animate-h1 relative">Projects</h1>
       <h2 id="websites-h2" class="h2 opacity-0 relative mt-8">Websites</h2>
-      <p id="websites-p" class="p opacity-0 text-justify mt-4">Websites and web apps where I've contributed significantly to its frontend design.</p>
+      <p id="websites-p" class="p opacity-0 text-justify mt-4">
+        Websites and web apps where I've contributed significantly to its frontend design.
+      </p>
       <div class="flex gap-8 flex-wrap mt-8 justify-center min-h-screen">
         {websites.map((site) => <Website website={site} client:only="svelte" />)}
       </div>
       <h2 id="tools-h2" class="h2 opacity-0 relative mt-16">Tools & APIs</h2>
-      <p id="tools-p" class="p opacity-0 text-justify mt-4">Tools, APIs and other software that I've contributed to that doesn't have a focus on UI.</p>
+      <p id="tools-p" class="p opacity-0 text-justify mt-4">
+        Tools, APIs and other software that I've contributed to that doesn't have a focus on UI.
+      </p>
       <div class="flex gap-6 flex-wrap mt-8 justify-center">
         {tools.map((tool) => <Tool tool={tool} client:only="svelte" />)}
       </div>
       <h2 id="oss-h2" class="h2 opacity-0 relative mt-16">Open Source</h2>
-      <p id="oss-p" class="p opacity-0 text-justify mt-4">Open source projects I've contributed to. The amount of contributions refers to the number of successfully merged pull requests.</p>
+      <p id="oss-p" class="p opacity-0 text-justify mt-4">
+        Open source projects I've contributed to. The amount of contributions refers to the number
+        of successfully merged pull requests.
+      </p>
       <div class="flex gap-6 flex-wrap mt-8 justify-center">
         {oss.map((tool) => <Tool tool={tool} client:only="svelte" />)}
       </div>
@@ -38,47 +45,43 @@ import { websites, tools, oss } from '../content/projects';
   const ossH2 = document.querySelector('#oss-h2') as HTMLHeadingElement | null;
   const ossP = document.querySelector('#oss-p') as HTMLParagraphElement | null;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
 
-      if (entry.target.isEqualNode(websitesH2) && websitesH2) {
-        websitesH2.classList.add('animate-h2-to-t');
-      }
+        if (entry.target.isEqualNode(websitesH2) && websitesH2) {
+          websitesH2.classList.add('animate-h2-to-t');
+        }
 
-      if (entry.target.isEqualNode(websitesP) && websitesP) {
-        websitesP.classList.add('animate-p');
-      }
+        if (entry.target.isEqualNode(websitesP) && websitesP) {
+          websitesP.classList.add('animate-p');
+        }
 
-      if (entry.target.isEqualNode(toolsH2) && toolsH2) {
-        toolsH2.classList.add('animate-h2-to-t');
-      }
+        if (entry.target.isEqualNode(toolsH2) && toolsH2) {
+          toolsH2.classList.add('animate-h2-to-t');
+        }
 
-      if (entry.target.isEqualNode(toolsP) && toolsP) {
-        toolsP.classList.add('animate-p');
-      }
+        if (entry.target.isEqualNode(toolsP) && toolsP) {
+          toolsP.classList.add('animate-p');
+        }
 
-      if (entry.target.isEqualNode(ossH2) && ossH2) {
-        ossH2.classList.add('animate-h2-to-t');
-      }
+        if (entry.target.isEqualNode(ossH2) && ossH2) {
+          ossH2.classList.add('animate-h2-to-t');
+        }
 
-      if (entry.target.isEqualNode(ossP) && ossP) {
-        ossP.classList.add('animate-p');
-      }
-    });
-  }, {
-    threshold: 1,
-    rootMargin: '0px 0px -16px 0px'
-  });
+        if (entry.target.isEqualNode(ossP) && ossP) {
+          ossP.classList.add('animate-p');
+        }
+      });
+    },
+    {
+      threshold: 1,
+      rootMargin: '0px 0px -16px 0px'
+    }
+  );
 
-  [
-    websitesH2,
-    websitesP,
-    toolsH2,
-    toolsP,
-    ossH2,
-    ossP
-  ].forEach((element) => {
+  [websitesH2, websitesP, toolsH2, toolsP, ossH2, ossP].forEach((element) => {
     if (element) {
       observer.observe(element);
     }

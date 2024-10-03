@@ -8,37 +8,96 @@ import { languages, frontend, backend, misc } from '../content/technologies';
 
 <Layout title="Mario564's Portfolio">
   <div class="1.5xl:min-h-[calc(100vh-64px)] h-full flex justify-center 1.5xl:items-center">
-    <div class="max-w-[1600px] w-full h-max flex relative py-content 1.5xl:p-content flex-col 1.5xl:flex-row">
-      <div class="absolute w-full h-32 lg:h-48 1.5xl:h-full top-0 sm:top-4 md:top-12 2md:top-16 lg:top-20 1.5xl:top-0 left-0 opacity-55 sm:opacity-50 md:opacity-45 2md:opacity-40 lg:opacity-30 1.5xl:opacity-20 z-[8] pointer-events-none">
-        <div class="w-full h-full bg-gradient-to-tr from-purple-500 to-orange-500 -z-10 rounded-[25%] blur-[96px] animate-landing-header-blur" />
-      </div>
-      <div class="w-full mb-8 sm:mb-16 1.5xl:mb-0 mr-0 xl:mr-24 2xl:mr-32 flex flex-col items-center 1.5xl:block">
-        <h1 class="relative opacity-0 animate-landing-welcome font-black text-3xl xs:text-4xl sm:text-5xl md:text-6xl w-max flex flex-col xs:inline-block select-none">
-          <span class="inline-block bg-gradient-to-b from-white from-[25%] to-zinc-500 text-transparent bg-clip-text w-max">Hi there!</span>
-          <span class="inline-block bg-gradient-to-b from-white from-[25%] to-zinc-500 text-transparent bg-clip-text w-max">I'm Mario564</span>
-        </h1>
-        <div class="hidden w-[374px] sm:w-[499px] md:w-[623px] 1.5xl:w-auto xs:flex xs:text-lg sm:text-2xl md:text-3xl opacity-0 animate-landing-title font-source-code-pro font-medium mt-1 tracking-wide" style="animation-delay: 0.75s;">
-          <span class="bg-gradient-to-r from-purple-500 to-orange-500 text-transparent bg-clip-text">{'>'}</span>
-          <LandingTitle client:only="svelte"  />
+    <div
+      class="max-w-[1600px] w-full h-max flex relative py-content 1.5xl:p-content flex-col 1.5xl:flex-row"
+    >
+      <div
+        class="absolute w-full h-32 lg:h-48 1.5xl:h-full top-0 sm:top-4 md:top-12 2md:top-16 lg:top-20 1.5xl:top-0 left-0 opacity-55 sm:opacity-50 md:opacity-45 2md:opacity-40 lg:opacity-30 1.5xl:opacity-20 z-[8] pointer-events-none"
+      >
+        <div
+          class="w-full h-full bg-gradient-to-tr from-purple-500 to-orange-500 -z-10 rounded-[25%] blur-[96px] animate-landing-header-blur"
+        >
         </div>
       </div>
-      <div class="flex flex-col items-center gap-4 max-1.5xl:px-content text-justify 1.5xl:max-w-max">
-        <p class="max-1.5xl:p animate-paragraph relative opacity-0" style="animation-delay: 0.9s;"><span class="bg-gradient-to-r font-bold from-purple-500 to-orange-500 text-transparent bg-clip-text">Welcome to my website!</span> I'm a self-taught {Math.abs(new Date(Date.now() - 1099872000000).getUTCFullYear() - 1970)} year old web developer looking to learn new things and use my existing knowledge to create cool projects I'm passionate about.</p>
-        <p class="max-1.5xl:p animate-paragraph relative opacity-0" style="animation-delay: 0.93s;">I started my web development journey in 2019 with the basics: HTML, CSS and Javascript; just to see if it was my thing, and I quickly discovered that it certainly was! Fast forward to the present day, I've become a Typescript developer who is more experienced in the frontend, but still have plenty of knowledge on the backend as well. I also like trying out new technologies and contributing to open source.</p>
-        <p class="max-1.5xl:p animate-paragraph relative opacity-0" style="animation-delay: 0.96s;">Tech-related interests aside, I also enjoy playing video games, especially rhythm-based and platformers; I listen to a wide variety of music genres such as rock, metal, EDM, rap, jazz and many related genres and subgenres. Occassionally, I dip my toes in image editing and technical writing as well, not particularly great at them but they're other things I do enjoy from time to time.</p>
+      <div
+        class="w-full mb-8 sm:mb-16 1.5xl:mb-0 mr-0 xl:mr-24 2xl:mr-32 flex flex-col items-center 1.5xl:block"
+      >
+        <h1
+          class="relative opacity-0 animate-landing-welcome font-black text-3xl xs:text-4xl sm:text-5xl md:text-6xl w-max flex flex-col xs:inline-block select-none"
+        >
+          <span
+            class="inline-block bg-gradient-to-b from-white from-[25%] to-zinc-500 text-transparent bg-clip-text w-max"
+            >Hi there!</span
+          >
+          <span
+            class="inline-block bg-gradient-to-b from-white from-[25%] to-zinc-500 text-transparent bg-clip-text w-max"
+            >I'm Mario564</span
+          >
+        </h1>
+        <div
+          class="hidden w-[374px] sm:w-[499px] md:w-[623px] 1.5xl:w-auto xs:flex xs:text-lg sm:text-2xl md:text-3xl opacity-0 animate-landing-title font-source-code-pro font-medium mt-1 tracking-wide"
+          style="animation-delay: 0.75s;"
+        >
+          <span class="bg-gradient-to-r from-purple-500 to-orange-500 text-transparent bg-clip-text"
+            >{'>'}</span
+          >
+          <LandingTitle client:only="svelte" />
+        </div>
+      </div>
+      <div
+        class="flex flex-col items-center gap-4 max-1.5xl:px-content text-justify 1.5xl:max-w-max"
+      >
+        <p class="max-1.5xl:p animate-paragraph relative opacity-0" style="animation-delay: 0.9s;">
+          <span
+            class="bg-gradient-to-r font-bold from-purple-500 to-orange-500 text-transparent bg-clip-text"
+            >Welcome to my website!</span
+          > I'm a self-taught {
+            Math.abs(new Date(Date.now() - 1099872000000).getUTCFullYear() - 1970)
+          } year old web developer looking to learn new things and use my existing knowledge to create
+          cool projects I'm passionate about.
+        </p>
+        <p class="max-1.5xl:p animate-paragraph relative opacity-0" style="animation-delay: 0.93s;">
+          I started my web development journey in 2019 with the basics: HTML, CSS and Javascript;
+          just to see if it was my thing, and I quickly discovered that it certainly was! Fast
+          forward to the present day, I've become a Typescript developer who is more experienced in
+          the frontend, but still have plenty of knowledge on the backend as well. I also like
+          trying out new technologies and contributing to open source.
+        </p>
+        <p class="max-1.5xl:p animate-paragraph relative opacity-0" style="animation-delay: 0.96s;">
+          Tech-related interests aside, I also enjoy playing video games, especially rhythm-based
+          and platformers; I listen to a wide variety of music genres such as rock, metal, EDM, rap,
+          jazz and many related genres and subgenres. Occassionally, I dip my toes in image editing
+          and technical writing as well, not particularly great at them but they're other things I
+          do enjoy from time to time.
+        </p>
       </div>
     </div>
   </div>
   <div class="flex justify-center mt-16 px-content relative overflow-hidden">
-    <div class="bg-gradient-to-b from-woodsmoke-950 to-transparent w-screen h-16 absolute top-0 left-0 z-[5]" />
-    <div class="bg-gradient-to-t from-woodsmoke-950 to-transparent w-screen h-16 absolute bottom-0 left-0 z-[5]" />
-    <div id="grid-bg" class="bg-[url('/landing-grid-bg.png')] w-screen h-full absolute top-0 left-0 z-[4] bg-[length:450px] duration-[850ms]" style="opacity: 0;" />
+    <div
+      class="bg-gradient-to-b from-woodsmoke-950 to-transparent w-screen h-16 absolute top-0 left-0 z-[5]"
+    >
+    </div>
+    <div
+      class="bg-gradient-to-t from-woodsmoke-950 to-transparent w-screen h-16 absolute bottom-0 left-0 z-[5]"
+    >
+    </div>
+    <div
+      id="grid-bg"
+      class="bg-[url('/landing-grid-bg.png')] w-screen h-full absolute top-0 left-0 z-[4] bg-[length:450px] duration-[850ms]"
+      style="opacity: 0;"
+    >
+    </div>
     <div class="max-w-[1200px] flex flex-col items-center z-[6] relative my-16">
       <h2 id="technologies-h2" class="h2 opacity-0 relative">Technologies</h2>
       <div id="technologies-p" class="opacity-0">
-        <p class="p text-justify mt-8">Here's a list of techonologies I've worked with in the past, with the number of stars indicating my level of experience with each.</p>
+        <p class="p text-justify mt-8">
+          Here's a list of techonologies I've worked with in the past, with the number of stars
+          indicating my level of experience with each.
+        </p>
         <p class="p text-justify mt-2 italic text-zinc-500">
-          <strong>DISCLAIMER:</strong> I'm not affiliated with any of these companies and/or technologies unless stated otherwise.
+          <strong>DISCLAIMER:</strong> I'm not affiliated with any of these companies and/or technologies
+          unless stated otherwise.
         </p>
       </div>
       <strong class="subtitle mt-8">Languages</strong>
@@ -62,9 +121,14 @@ import { languages, frontend, backend, misc } from '../content/technologies';
   <div class="flex justify-center mt-16 px-content">
     <div class="max-w-[1200px] w-full">
       <h2 id="contact-h2" class="h2 opacity-0 relative">Contact</h2>
-      <div class="grid md:grid-cols-[calc(55%-4rem)_45%] xl:grid-cols-[calc(60%-6rem)_40%] 1.5xl:grid-cols-[calc(60%-8rem)_40%] gap-8 md:gap-16 xl:gap-24 1.5xl:gap-32 w-full mt-8">
+      <div
+        class="grid md:grid-cols-[calc(55%-4rem)_45%] xl:grid-cols-[calc(60%-6rem)_40%] 1.5xl:grid-cols-[calc(60%-8rem)_40%] gap-8 md:gap-16 xl:gap-24 1.5xl:gap-32 w-full mt-8"
+      >
         <div id="contact-p" class="w-full opacity-0">
-          <p class="p text-justify">If you wish to contact me, my preferred method of communicating is through Discord. If you're inquiry is more serious use my email.</p>
+          <p class="p text-justify">
+            If you wish to contact me, my preferred method of communicating is through Discord. If
+            you're inquiry is more serious use my email.
+          </p>
         </div>
         <div class="w-full grid grid-cols-2 h-full justify-center items-center gap-2 lg:gap-4">
           <ContactButtons client:visible />
@@ -81,49 +145,50 @@ import { languages, frontend, backend, misc } from '../content/technologies';
   const contactH2 = document.querySelector('#contact-h2') as HTMLHeadingElement | null;
   const contactP = document.querySelector('#contact-p') as HTMLParagraphElement | null;
 
-  const observer1 = new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting && gridBg) {
-      gridBg.style.opacity = '0.025';
+  const observer1 = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting && gridBg) {
+        gridBg.style.opacity = '0.025';
+      }
+    },
+    {
+      threshold: 0.33
     }
-  }, {
-    threshold: 0.33
-  });
+  );
 
   if (gridBg) {
     observer1.observe(gridBg);
   }
 
-  const observer2 = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
+  const observer2 = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
 
-      if (entry.target.isEqualNode(technologiesH2) && technologiesH2) {
-        technologiesH2.classList.add('animate-h2-to-t');
-      }
+        if (entry.target.isEqualNode(technologiesH2) && technologiesH2) {
+          technologiesH2.classList.add('animate-h2-to-t');
+        }
 
-      if (entry.target.isEqualNode(contactH2) && contactH2) {
-        contactH2.classList.add('animate-h2-to-l');
-      }
+        if (entry.target.isEqualNode(contactH2) && contactH2) {
+          contactH2.classList.add('animate-h2-to-l');
+        }
 
-      if (entry.target.isEqualNode(technologiesP) && technologiesP) {
-        technologiesP.classList.add('animate-p');
-      }
+        if (entry.target.isEqualNode(technologiesP) && technologiesP) {
+          technologiesP.classList.add('animate-p');
+        }
 
-      if (entry.target.isEqualNode(contactP) && contactP) {
-        contactP.classList.add('animate-p');
-      }
-    });
-  }, {
-    threshold: 1,
-    rootMargin: '0px 0px -16px 0px'
-  });
+        if (entry.target.isEqualNode(contactP) && contactP) {
+          contactP.classList.add('animate-p');
+        }
+      });
+    },
+    {
+      threshold: 1,
+      rootMargin: '0px 0px -16px 0px'
+    }
+  );
 
-  [
-    technologiesH2,
-    contactH2,
-    technologiesP,
-    contactP
-  ].forEach((el) => {
+  [technologiesH2, contactH2, technologiesP, contactP].forEach((el) => {
     if (el) {
       observer2.observe(el);
     }

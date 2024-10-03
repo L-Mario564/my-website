@@ -39,7 +39,14 @@ interface Tournament {
   img: string;
 }
 
-type StaffRole = 'Spreadsheeter' | 'GFX Designer' | 'Referee' | 'Front-end Developer' | 'Backend Developer' | 'Playtester' | 'Translator';
+type StaffRole =
+  | 'Spreadsheeter'
+  | 'GFX Designer'
+  | 'Referee'
+  | 'Front-end Developer'
+  | 'Backend Developer'
+  | 'Playtester'
+  | 'Translator';
 
 export interface TournamentPlayed extends Tournament {
   forumPostId: string;
@@ -71,7 +78,7 @@ export interface TournamentBanner {
   date: string;
   img: string;
   tournament: string;
-  type: 'staff'|  'player';
+  type: 'staff' | 'player';
   tall?: boolean;
   /** Some banners are much taller than others, by default each banner will count as 1 (weight = 1) but can be set to be the equivalent of more than one banner (a greater weight) */
   weight?: number;

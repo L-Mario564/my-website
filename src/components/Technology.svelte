@@ -10,14 +10,21 @@
   const showExperience = createToggle(false);
 </script>
 
-<div class="flex flex-col items-center relative bg-clip-padding border-2 p-4 border-transparent rounded-md bg-woodsmoke-950 before:absolute before:inset-0 before:-z-[1] before:-m-[2px] before:rounded-[inherit] before:bg-gradient-to-tr before:from-purple-500 before:to-orange-500">
+<div
+  class="flex flex-col items-center relative bg-clip-padding border-2 p-4 border-transparent rounded-md bg-woodsmoke-950 before:absolute before:inset-0 before:-z-[1] before:-m-[2px] before:rounded-[inherit] before:bg-gradient-to-tr before:from-purple-500 before:to-orange-500"
+>
   {#if $showTechName}
     <div class="tooltip -top-7" transition:fade={{ duration: 75 }}>
       <div class="tooltip-caret" />
       {technology.name}
     </div>
   {/if}
-  <a href={technology.website} target="_blank" on:focus={showTechName.toTrue} on:blur={showTechName.toFalse}>
+  <a
+    href={technology.website}
+    target="_blank"
+    on:focus={showTechName.toTrue}
+    on:blur={showTechName.toFalse}
+  >
     <img
       src={`/tech-logos/${technology.imgName}.png`}
       alt={technology.name}
@@ -28,7 +35,14 @@
       on:mouseleave={showTechName.toFalse}
     />
   </a>
-  <button class="flex justify-center gap-1 items-center mt-2" tabindex="0" on:focus={showExperience.toTrue} on:blur={showExperience.toFalse} on:mouseenter={showExperience.toTrue} on:mouseleave={showExperience.toFalse}>
+  <button
+    class="flex justify-center gap-1 items-center mt-2"
+    tabindex="0"
+    on:focus={showExperience.toTrue}
+    on:blur={showExperience.toFalse}
+    on:mouseenter={showExperience.toTrue}
+    on:mouseleave={showExperience.toFalse}
+  >
     {#if $showExperience}
       <div class="tooltip top-3" transition:fade={{ duration: 75 }}>
         <div class="tooltip-caret" />
@@ -45,10 +59,10 @@
         {/if}
       </div>
     {/if}
-    {#each new Array(technology.experience) as  _}
+    {#each new Array(technology.experience) as _}
       <Star class="fill-white stroke-white stroke-2 w-3 h-3" />
     {/each}
-    {#each new Array(5 - technology.experience) as  _}
+    {#each new Array(5 - technology.experience) as _}
       <Circle class="fill-white stroke-white opacity-25 stroke-2 w-1 h-1 m-1" />
     {/each}
   </button>

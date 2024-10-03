@@ -26,7 +26,7 @@
   startingSrc={buildSrc(current)}
   previousSrc={previousImage}
   nextSrc={nextImage}
-  close={close}
+  {close}
   currentNumber={current}
   total={website.img.count}
 />

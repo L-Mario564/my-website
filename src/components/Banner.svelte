@@ -20,13 +20,16 @@
   const showBannerSlideshow = createToggle(false);
 
   onMount(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting || !bannerContainer) return;
-      bannerContainer.classList.add('animate-project');
-    }, {
-      threshold: banner.tall ? 0.5 : 1,
-      rootMargin: '0px 0px 0px 0px'
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || !bannerContainer) return;
+        bannerContainer.classList.add('animate-project');
+      },
+      {
+        threshold: banner.tall ? 0.5 : 1,
+        rootMargin: '0px 0px 0px 0px'
+      }
+    );
 
     if (bannerContainer) {
       observer.observe(bannerContainer);
@@ -60,19 +63,45 @@
 {#if $showBannerSlideshow}
   <BannerSlideshow currentBanner={banner} close={onSlideshowClose} />
 {/if}
-<div role="presentation" class="relative z-[1] w-[19rem] xs:w-[21.75rem] opacity-0 border-2 border-transparent rounded-md before:absolute before:inset-0 before:-z-[1] before:-m-[2px] before:rounded-[inherit] before:bg-gradient-to-tr before:from-purple-500 before:to-orange-500" on:mouseenter={showDetails.toTrue} on:mouseleave={showDetails.toFalse} bind:this={bannerContainer}>
+<div
+  role="presentation"
+  class="relative z-[1] w-[19rem] xs:w-[21.75rem] opacity-0 border-2 border-transparent rounded-md before:absolute before:inset-0 before:-z-[1] before:-m-[2px] before:rounded-[inherit] before:bg-gradient-to-tr before:from-purple-500 before:to-orange-500"
+  on:mouseenter={showDetails.toTrue}
+  on:mouseleave={showDetails.toFalse}
+  bind:this={bannerContainer}
+>
   <div class="w-full h-full absolute top-0 left-0 flex items-center justify-center">
-    <button class="w-0 h-0 pointer-events-none" on:focus={showDetails.toTrue} on:click={showSlideshow} on:keydown={onBtnKeydown} on:blur={showDetails.toFalse} bind:this={btn} />
+    <button
+      class="w-0 h-0 pointer-events-none"
+      on:focus={showDetails.toTrue}
+      on:click={showSlideshow}
+      on:keydown={onBtnKeydown}
+      on:blur={showDetails.toFalse}
+      bind:this={btn}
+    />
   </div>
   {#if $showDetails}
-    <button transition:fade={{ duration: 300 }} tabindex="-1" class="absolute z-[3] w-full h-full rounded-md duration-300" on:click={showSlideshow}>
+    <button
+      transition:fade={{ duration: 300 }}
+      tabindex="-1"
+      class="absolute z-[3] w-full h-full rounded-md duration-300"
+      on:click={showSlideshow}
+    >
       <div>
-        <strong class={`text-white font-bold text-xl ${banner.tournament.length > 28 ? ' tracking-tight' : ''}`}>{banner.tournament}</strong>
-        <span class="block bg-gradient-to-r font-bold text-lg from-purple-500 to-orange-500 text-transparent bg-clip-text">{banner.type === 'player' ? 'Player' : 'Staff'} Banner</span>
+        <strong
+          class={`text-white font-bold text-xl ${banner.tournament.length > 28 ? ' tracking-tight' : ''}`}
+          >{banner.tournament}</strong
+        >
+        <span
+          class="block bg-gradient-to-r font-bold text-lg from-purple-500 to-orange-500 text-transparent bg-clip-text"
+          >{banner.type === 'player' ? 'Player' : 'Staff'} Banner</span
+        >
       </div>
     </button>
   {/if}
-  <div class="absolute w-full h-full top-0 left-0 z-[1] bg-woodsmoke-950 rounded-md pointer-events-none" />
+  <div
+    class="absolute w-full h-full top-0 left-0 z-[1] bg-woodsmoke-950 rounded-md pointer-events-none"
+  />
   <img
     src={`/banners/${banner.img}`}
     alt="tournament banner"

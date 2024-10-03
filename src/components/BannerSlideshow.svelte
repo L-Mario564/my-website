@@ -27,7 +27,7 @@
   startingSrc={buildSrc(currentBanner.img)}
   previousSrc={previousImage}
   nextSrc={nextImage}
-  close={close}
+  {close}
   currentNumber={tournamentBannerIds.length - current + 1}
   total={tournamentBannerIds.length}
 />

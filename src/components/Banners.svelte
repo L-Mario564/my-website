@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Banner from './Banner.svelte'
+  import Banner from './Banner.svelte';
   import { tournamentBanners } from '../content/tournaments';
   import { onMount } from 'svelte';
   import type { TournamentBanner } from '../utils/types';
@@ -18,7 +18,6 @@
     window.addEventListener('resize', updateMasonryColumns);
     return () => window.removeEventListener('resize', updateMasonryColumns);
   });
-
 
   function splitBanners(banners: TournamentBanner[], parts: number): TournamentBanner[][] {
     const columns: TournamentBanner[][] = Array.from({ length: parts }, () => []);
@@ -53,7 +52,7 @@
     {#each bannerColumns as bannerColumn}
       <div class="flex flex-col gap-6">
         {#each bannerColumn as banner}
-          <Banner banner={banner} />
+          <Banner {banner} />
         {/each}
       </div>
     {/each}
