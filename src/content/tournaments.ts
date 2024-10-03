@@ -1,4 +1,4 @@
-import type { TournamentPlayed, TournamentStaffed } from '../utils/types';
+import type { TournamentBanner, TournamentPlayed, TournamentStaffed } from '../utils/types';
 
 export const tournamentsPlayed = ([{
   id: 1,
@@ -650,3 +650,112 @@ export const tournamentsStaffed = ([{
   roles: ['Translator'],
   forumPostId: '1889282'
 }] satisfies TournamentStaffed[]).reverse();
+
+export const tournamentBanners = ([{
+  id: 1,
+  date: 'January 31st, 2021',
+  img: 'pdn.png',
+  tournament: 'Pas De Nom',
+  type: 'staff'
+}, {
+  id: 2,
+  date: 'January 31st, 2021',
+  img: 'estspring2021.png',
+  tournament: 'Entropy\'s Spring Tournament 2021',
+  type: 'staff'
+}, {
+  id: 3,
+  date: ' February 21st, 2021',
+  img: 'ot.png',
+  tournament: 'oldsu! Tournament',
+  type: 'staff'
+}, {
+  id: 4,
+  date: 'May 30th, 2021',
+  img: 'kb2st.png',
+  tournament: 'Koro\'s Back 2 Skool Tournament',
+  type: 'staff'
+}, {
+  id: 5,
+  date: 'June 3rd, 2021',
+  img: 'tc2.png',
+  tournament: 'Tomori Cup 2',
+  type: 'staff',
+  weight: 2
+}, {
+  id: 6,
+  date: 'June 5th, 2021',
+  img: 'hkc.png',
+  tournament: 'HKttyCup (Tier 2)',
+  type: 'player'
+}, {
+  id: 7,
+  date: 'September 15th, 2021',
+  img: 'ckt.jpg',
+  tournament: 'Crying Koroking Tournament',
+  type: 'staff'
+}, {
+  id: 8,
+  date: 'October 16th, 2021',
+  img: 'woc.gif',
+  tournament: 'WhiteOut Cup',
+  type: 'player'
+}, {
+  id: 9,
+  date: 'December 5th, 2021',
+  img: 'kt.png',
+  tournament: 'Kono Tournamento',
+  type: 'staff'
+}, {
+  id: 10,
+  date: 'January 3rd, 2022',
+  img: 'gc.gif',
+  tournament: 'Gura Cup',
+  type: 'staff'
+}, {
+  id: 11,
+  date: 'March 23rd, 2022',
+  img: 'evoc.png',
+  tournament: 'Evolution Cup',
+  type: 'staff'
+}, {
+  id: 12,
+  date: 'May 30th, 2022',
+  img: 'estsummer2022.gif',
+  tournament: 'Entropy\'s Summer Tournament 2022',
+  type: 'staff'
+}, {
+  id: 13,
+  date: 'October 28th, 2022',
+  img: 'oprr.jpg',
+  tournament: 'Rock Rumble',
+  type: 'staff'
+}, {
+  id: 14,
+  date: 'November 1st, 2022',
+  img: 'stdc.png',
+  tournament: 'Scarlet\'s Team Draft Competition',
+  type: 'staff'
+}, {
+  id: 15,
+  date: 'November 3rd, 2022',
+  img: '6wc2.gif',
+  tournament: '6 Digit World Cup 2',
+  type: 'staff',
+  tall: true,
+  weight: 4
+}, {
+  id: 16,
+  date: 'March 6th, 2023',
+  img: 'wdt.png',
+  tournament: 'Waffle\'s Draft Tournament',
+  type: 'staff'
+}, {
+  id: 17,
+  date: 'May 26th, 2024',
+  img: 'testopen.gif',
+  tournament: 'TEST Open',
+  type: 'staff'
+}] satisfies TournamentBanner[]).reverse();
+
+export const tournamentBannerIds = tournamentBanners.map(({ id }) => id);

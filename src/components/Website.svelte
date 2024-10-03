@@ -2,7 +2,7 @@
   import Globe from 'lucide-svelte/icons/globe';
   import Image from 'lucide-svelte/icons/image';
   import Github from './icons/Github.svelte';
-  import Slideshow from './Slideshow.svelte';
+  import WebsiteSlideshow from './WebsiteSlideshow.svelte';
   import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
   import { createToggle, showGlow } from '../utils/stores';
@@ -71,7 +71,7 @@
 </script>
 
 {#if $showScreenshots}
-  <Slideshow website={website} close={onSlideshowClose} />
+  <WebsiteSlideshow website={website} close={onSlideshowClose} />
 {/if}
 <div role="presentation" class="relative w-[27rem] opacity-0" on:mouseenter={showDetails.toTrue} on:mouseleave={showDetails.toFalse} bind:this={websiteContainer}>
   <button class="w-full h-0 pointer-events-none absolute bottom-0 left-0" on:focus={showDetails.toTrue} on:keydown={onBtnKeydown} on:blur={onBtnBlur} bind:this={btn} />

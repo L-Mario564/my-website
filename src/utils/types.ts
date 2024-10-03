@@ -67,9 +67,12 @@ export interface TournamentStaffed extends Tournament {
 }
 
 export interface TournamentBanner {
+  id: number;
   date: string;
   img: string;
-  height: number;
   tournament: string;
   type: 'staff'|  'player';
+  tall?: boolean;
+  /** Some banners are much taller than others, by default each banner will count as 1 (weight = 1) but can be set to be the equivalent of more than one banner (a greater weight) */
+  weight?: number;
 }

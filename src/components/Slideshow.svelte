@@ -7,11 +7,15 @@
   import { fly, fade } from 'svelte/transition';
   import { onMount } from 'svelte';
   import { focusTrap } from '../utils/focus-trap';
-  import type { Website } from '../utils/types';
 
-  export let website: Website;
+  export let alt: string;
+  export let startingSrc: string;
+  export let previousSrc: () => string;
+  export let nextSrc: () => string;
   export let close: () => void;
-  let currentImage = 1;
+  export let currentNumber: number;
+  export let total: number;
+  let currentSrc = startingSrc;
   let loading = true;
   let animateImg = false;
 
@@ -22,7 +26,7 @@
 
   function previousImage() {
     setTimeout(() => {      
-      currentImage = currentImage > 1 ? currentImage - 1 : website.img.count;
+      currentSrc = previousSrc();
     }, 150);
 
     animateImg = true;
@@ -30,7 +34,7 @@
 
   function nextImage() {
     setTimeout(() => {      
-      currentImage = currentImage < website.img.count ? currentImage + 1 : 1;
+      currentSrc = nextSrc();
     }, 150);
 
     animateImg = true;
@@ -45,8 +49,8 @@
 <div use:portal use:focusTrap={true} transition:fly={{ duration: 300, y: 100 }} class="fixed w-screen h-screen max-w-full max-h-full top-0 left-0 z-[60] bg-woodsmoke-950/75 flex justify-center items-center overflow-hidden p-8 pb-[4.5rem]">
   <div role="presentation" on:click={close} class="absolute w-full h-full top-0 left-0 z-[1]" />
   <img
-    src={`/websites/${website.img.folder}/${currentImage}.jpg`}
-    alt={`website screenshot ${currentImage}`}
+    src={currentSrc}
+    alt={alt}
     class={`w-auto h-auto max-w-full max-h-full z-[2] rounded-md ${animateImg ? 'animate-slideshow-img-out' : 'animate-slideshow-img-in'}`}
     on:load={onImgLoad}
   />
@@ -65,7 +69,7 @@
       <button class="rounded-full duration-300 w-8 h-8 flex justify-center items-center hover:bg-white/15" on:click={previousImage}>
         <ChevronLeft size={20} class="stroke-white" />
       </button>
-      <span class="inline-block">{currentImage} / {website.img.count}</span>
+      <span class="inline-block">{currentNumber} / {total}</span>
       <button class="rounded-full duration-300 w-8 h-8 flex justify-center items-center hover:bg-white/15" on:click={nextImage}>
         <ChevronRight size={20} class="stroke-white" />
       </button>

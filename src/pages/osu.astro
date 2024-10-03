@@ -2,6 +2,7 @@
 import Layout from '../components/Layout.astro';
 import Glow from '../components/Glow.svelte';
 import Tournament from '../components/Tournament.svelte';
+import Banners from '../components/Banners.svelte';
 import { tournamentsPlayed, tournamentsStaffed } from '../content/tournaments';
 ---
 
@@ -28,6 +29,9 @@ import { tournamentsPlayed, tournamentsStaffed } from '../content/tournaments';
           type: 'played'
         }} client:only="svelte" />)}
       </div>
+      <h2 id="banners-h2" class="h2 opacity-0 relative mt-16">Banners</h2>
+      <p id="banners-p" class="p opacity-0 mt-8 text-justify">Banners I've been awarded for staffing or playing in certain tournaments.</p>
+      <Banners client:only="svelte" />
     </div>
   </div>
 </Layout>
@@ -37,6 +41,8 @@ import { tournamentsPlayed, tournamentsStaffed } from '../content/tournaments';
   const introP2 = document.querySelector('#intro-p2') as HTMLParagraphElement | null;
   const tournamentsStaffedH2 = document.querySelector('#tournaments-staffed-h2') as HTMLHeadingElement | null;
   const tournamentsPlayedH2 = document.querySelector('#tournaments-played-h2') as HTMLHeadingElement | null;
+  const bannersH2 = document.querySelector('#banners-h2') as HTMLHeadingElement | null;
+  const bannersP = document.querySelector('#banners-p') as HTMLParagraphElement | null;
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -57,6 +63,14 @@ import { tournamentsPlayed, tournamentsStaffed } from '../content/tournaments';
       if (entry.target.isEqualNode(tournamentsPlayedH2) && tournamentsPlayedH2) {
         tournamentsPlayedH2.classList.add('animate-h2-to-t');
       }
+
+      if (entry.target.isEqualNode(bannersH2) && bannersH2) {
+        bannersH2.classList.add('animate-h2-to-t');
+      }
+
+      if (entry.target.isEqualNode(bannersP) && bannersP) {
+        bannersP.classList.add('animate-p');
+      }
     });
   }, {
     threshold: 1,
@@ -67,7 +81,9 @@ import { tournamentsPlayed, tournamentsStaffed } from '../content/tournaments';
     introP1,
     introP2,
     tournamentsStaffedH2,
-    tournamentsPlayedH2
+    tournamentsPlayedH2,
+    bannersH2,
+    bannersP
   ].forEach((element) => {
     if (element) {
       observer.observe(element);

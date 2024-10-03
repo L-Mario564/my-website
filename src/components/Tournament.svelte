@@ -5,7 +5,7 @@
   import Image from 'lucide-svelte/icons/image';
   import Table2 from 'lucide-svelte/icons/table-2';
   import Osu from './icons/Osu.svelte';
-  import Slideshow from './Slideshow.svelte';
+  import WebsiteSlideshow from './WebsiteSlideshow.svelte';
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
   import { createToggle, showGlow } from '../utils/stores';
@@ -77,16 +77,16 @@
 </script>
 
 {#if $showWebsiteScreenshots && tournament.type === 'staffed'}
-  <Slideshow website={websites.find((website) => website.id === tournament.websiteId) ?? websites[0]} close={onSlideshowClose} />
+  <WebsiteSlideshow website={websites.find((website) => website.id === tournament.websiteId) ?? websites[0]} close={onSlideshowClose} />
 {/if}
-<div role="presentation" class="relative w-[22.5rem] h-max opacity-0" on:mouseenter={showDetails.toTrue} on:mouseleave={showDetails.toFalse} bind:this={tournamentContainer}>
+<div role="presentation" class="relative w-[21.75rem] h-max opacity-0" on:mouseenter={showDetails.toTrue} on:mouseleave={showDetails.toFalse} bind:this={tournamentContainer}>
   <button class="w-full h-0 pointer-events-none absolute bottom-0 left-0" on:focus={showDetails.toTrue} on:keydown={onBtnKeydown} on:blur={onBtnBlur} bind:this={btn} />
   <div class="absolute w-full h-full top-0 left-0 z-[12] p-4">
     <div class="relative h-[28px]">
       {#if $showTeams && tournament.type === 'played'}
         <strong class="text-white font-bold text-xl absolute top-0 left-0" transition:fade={{ duration: 150 }}>{tournament.team?.name}</strong>
       {:else}
-        <strong class={`text-white font-bold text-xl absolute top-0 left-0 ${tournament.name.length > 28 ? 'tracking-tight' : ''}`.trim()} transition:fade={{ duration: 150 }}>{tournament.name}</strong>
+        <strong class={`text-white font-bold text-xl absolute top-0 left-0${tournament.name.length > 28 ? ' tracking-tight' : ''}`} transition:fade={{ duration: 150 }}>{tournament.name}</strong>
       {/if}
     </div>
     <div class="w-full h-[2px] rounded-full bg-gradient-to-r from-purple-500 to-orange-500 mt-1 mb-2" />
@@ -136,9 +136,9 @@
             <a href={website.url} target="_blank" class="hover:underline w-max">Website</a>
           </div>
         {/if}
-        {#if tournament.forumPostId}
+        {#if tournament.forumPostId && !$showTeams}
           {@const forumPostUrl = `https://osu.ppy.sh/community/forums/topics/${tournament.forumPostId}`}
-          <div class="flex text-sm items-center gap-2">
+          <div transition:fade={{ duration: 150 }} class="flex text-sm items-center gap-2">
             <Osu w={16} h={16} class="stroke-white" />
             <a href={forumPostUrl} target="_blank" class="hover:underline w-max" on:blur={(tournament.type === 'staffed' && tournament.spreadsheetId) || hasTeam || hasWebsite ? undefined : showDetails.toFalse}>Forum Post</a>
           </div>
