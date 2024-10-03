@@ -60,7 +60,7 @@
 {#if $showBannerSlideshow}
   <BannerSlideshow currentBanner={banner} close={onSlideshowClose} />
 {/if}
-<div role="presentation" class="relative z-[1] w-[21.75rem] opacity-0 border-2 border-transparent rounded-md before:absolute before:inset-0 before:-z-[1] before:-m-[2px] before:rounded-[inherit] before:bg-gradient-to-tr before:from-purple-500 before:to-orange-500" on:mouseenter={showDetails.toTrue} on:mouseleave={showDetails.toFalse} bind:this={bannerContainer}>
+<div role="presentation" class="relative z-[1] w-[19rem] xs:w-[21.75rem] opacity-0 border-2 border-transparent rounded-md before:absolute before:inset-0 before:-z-[1] before:-m-[2px] before:rounded-[inherit] before:bg-gradient-to-tr before:from-purple-500 before:to-orange-500" on:mouseenter={showDetails.toTrue} on:mouseleave={showDetails.toFalse} bind:this={bannerContainer}>
   <div class="w-full h-full absolute top-0 left-0 flex items-center justify-center">
     <button class="w-0 h-0 pointer-events-none" on:focus={showDetails.toTrue} on:click={showSlideshow} on:keydown={onBtnKeydown} on:blur={showDetails.toFalse} bind:this={btn} />
   </div>

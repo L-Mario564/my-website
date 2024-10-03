@@ -32,10 +32,10 @@
   }
 </script>
 
-<div class="relative w-96 h-48 bg-gradient-to-tr from-purple-500/10 via-woodsmoke-900/10 via-[50%] to-orange-500/10 p-4 rounded-md opacity-0" bind:this={toolContainer}>
-  <strong class="text-white font-bold text-xl w-full block">{tool.name}</strong>
+<div class="relative w-full sm:w-96 h-48 bg-gradient-to-tr from-purple-500/10 via-woodsmoke-900/10 via-[50%] to-orange-500/10 p-4 rounded-md opacity-0" bind:this={toolContainer}>
+  <strong class="text-white font-bold w-full block text-lg leading-tight xs:text-xl xs:leading-normal">{tool.name}</strong>
   <div class="w-full h-[2px] rounded-full bg-gradient-to-r from-purple-500 to-orange-500 mt-1 mb-2" />
-  <p class="text-sm">{tool.description}</p>
+  <p class="text-xs xs:text-sm">{tool.description}</p>
   <div class="absolute bottom-4 left-4 flex gap-2">
     {#if tool.url}
       <a href={tool.url} class="block duration-300 hover:opacity-75">

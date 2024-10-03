@@ -79,7 +79,7 @@
 {#if $showWebsiteScreenshots && tournament.type === 'staffed'}
   <WebsiteSlideshow website={websites.find((website) => website.id === tournament.websiteId) ?? websites[0]} close={onSlideshowClose} />
 {/if}
-<div role="presentation" class="relative w-[21.75rem] h-max opacity-0" on:mouseenter={showDetails.toTrue} on:mouseleave={showDetails.toFalse} bind:this={tournamentContainer}>
+<div role="presentation" class="relative w-full xs:w-[21.75rem] h-max opacity-0" on:mouseenter={showDetails.toTrue} on:mouseleave={showDetails.toFalse} bind:this={tournamentContainer}>
   <button class="w-full h-0 pointer-events-none absolute bottom-0 left-0" on:focus={showDetails.toTrue} on:keydown={onBtnKeydown} on:blur={onBtnBlur} bind:this={btn} />
   <div class="absolute w-full h-full top-0 left-0 z-[12] p-4">
     <div class="relative h-[28px]">

@@ -73,24 +73,24 @@
 {#if $showScreenshots}
   <WebsiteSlideshow website={website} close={onSlideshowClose} />
 {/if}
-<div role="presentation" class="relative w-[27rem] opacity-0" on:mouseenter={showDetails.toTrue} on:mouseleave={showDetails.toFalse} bind:this={websiteContainer}>
+<div role="presentation" class="relative w-full sm:w-[27rem] opacity-0" on:mouseenter={showDetails.toTrue} on:mouseleave={showDetails.toFalse} bind:this={websiteContainer}>
   <button class="w-full h-0 pointer-events-none absolute bottom-0 left-0" on:focus={showDetails.toTrue} on:keydown={onBtnKeydown} on:blur={onBtnBlur} bind:this={btn} />
   {#if $showDetails}
-    <div transition:fade={{ duration: 300 }} class="absolute w-full h-full top-0 left-0 z-[12] p-4">
-      <strong class="text-white font-bold text-xl">{website.name}</strong>
+    <div transition:fade={{ duration: 300 }} class="absolute w-full h-full top-0 left-0 z-[12] p-2 xs:p-4">
+      <strong class="text-white font-bold text-lg leading-tight xs:text-xl xs:leading-normal">{website.name}</strong>
       <div class="w-full h-[2px] rounded-full bg-gradient-to-r from-purple-500 to-orange-500 mt-1 mb-2" />
-      <p class="text-sm">{website.description}</p>
+      <p class="text-xs xs:text-sm">{website.description}</p>
       <div class="absolute bottom-0 left-0 p-4 flex flex-col gap-1">
         {#if website.url}
-          <div class="flex text-sm items-center gap-2">
+          <div class="flex text-xs xs:text-sm items-center gap-2">
             <Globe size={16} class="stroke-white" />
-            <a href={website.url} target="_blank" class="hover:underline">{new URL(website.url).hostname}</a>
+            <a href={website.url} target="_blank" class="hover:underline ">{new URL(website.url).hostname}</a>
           </div>
         {/if}
         {#if website.repo}
-          <div class="flex text-sm items-center gap-2">
+          <div class="flex text-xs xs:text-sm items-center gap-2">
             <Github w={16} h={16} class="fill-white" />
-            <a href={website.repo} target="_blank" class="hover:underline">{new URL(website.repo).pathname.slice(1)}</a>
+            <a href={website.repo} target="_blank" class="hover:underline ">{new URL(website.repo).pathname.slice(1)}</a>
           </div>
         {/if}
       </div>
