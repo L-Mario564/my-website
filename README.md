@@ -1,1 +1,1 @@
-Mario564's personal website (v2). WIP.
+Mario564's personal website (v2).
